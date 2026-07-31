@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ─── SUCHMASCHINEN ──────────────────────────────────────────
-       Der Markenname steht bewusst am Anfang von Titel und
-       Beschreibung und wiederholt sich in Überschrift, Fließtext
-       und den strukturierten Daten weiter unten. -->
-  <title>Einfach Scooter – Tuning-Adapter für Xiaomi- und Brightway-Scooter</title>
-  <meta name="description" content="Einfach Scooter: Tuning-Adapter für Xiaomi- und Brightway-E-Scooter. Die offizielle Anleitung zum Aufspielen der Firmware – Schritt für Schritt, mit Downloads und Support.">
+       Titel und Beschreibung decken beides ab: das, wonach Nutzer
+       suchen ("entdrosseln", "schneller machen", "Tuning-Chip"),
+       und den Markennamen. Beides wiederholt sich in Überschriften,
+       Fließtext, FAQ und den strukturierten Daten weiter unten. -->
+  <title>Xiaomi E-Scooter entdrosseln – Tuning-Chip von Einfach Scooter</title>
+  <meta name="description" content="Xiaomi E-Scooter entdrosseln und schneller machen: Anleitung von Einfach Scooter zum Flashen der Firmware mit dem Tuning-Chip. Downloads, 10 Schritte, Support.">
   <meta name="author" content="Einfach Scooter">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://einfach-scooter.de/">
 
   <meta property="og:site_name" content="Einfach Scooter">
-  <meta property="og:title" content="Einfach Scooter – Tuning-Adapter für Xiaomi- und Brightway-Scooter">
-  <meta property="og:description" content="Die offizielle Anleitung von Einfach Scooter: Firmware auf Xiaomi- und Brightway-Scooter aufspielen – Schritt für Schritt.">
+  <meta property="og:title" content="Xiaomi E-Scooter entdrosseln – Tuning-Chip von Einfach Scooter">
+  <meta property="og:description" content="So machst du deinen Xiaomi E-Scooter schneller: Firmware flashen mit dem Tuning-Chip von Einfach Scooter – Schritt für Schritt erklärt.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://einfach-scooter.de/">
   <meta property="og:locale" content="de_DE">
@@ -37,9 +38,11 @@
   <script src="assets/js/main.js" defer></script>
 
   <!-- ─── STRUKTURIERTE DATEN ────────────────────────────────────
-       Sagt Google, dass hinter der Domain das Unternehmen
-       "Einfach Scooter" steht, und verknüpft es mit dem eBay-Shop.
-       Muss inline stehen (JSON-LD lässt sich nicht auslagern). -->
+       Organization + WebSite ordnen die Domain dem Unternehmen zu,
+       HowTo beschreibt die Anleitung, FAQPage die häufigen Fragen.
+       Wichtig: Die Texte hier müssen inhaltlich dem sichtbaren
+       Text der Seite entsprechen. Muss inline stehen (JSON-LD
+       lässt sich nicht auslagern). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,7 +54,7 @@
         "alternateName": ["Einfach-Scooter", "einfach-scooter.de"],
         "url": "https://einfach-scooter.de/",
         "email": "support@einfach-scooter.de",
-        "description": "Einfach Scooter verkauft Tuning-Adapter, mit denen sich die Firmware von Xiaomi- und Brightway-E-Scootern über einen Windows-PC aufspielen lässt.",
+        "description": "Einfach Scooter verkauft Tuning-Chips (Flash-Adapter), mit denen sich die Firmware von Xiaomi E-Scootern über einen Windows-PC austauschen lässt.",
         "areaServed": "DE",
         "sameAs": ["https://www.ebay.de/usr/einfach_scooter"]
       },
@@ -67,31 +70,88 @@
       {
         "@type": "HowTo",
         "@id": "https://einfach-scooter.de/#anleitung",
-        "name": "Scooter-Firmware mit dem Tuning-Adapter von Einfach Scooter aufspielen",
-        "description": "Anleitung zum Aufspielen der Firmware auf Xiaomi- und Brightway-Scooter mit dem Tuning-Adapter von Einfach Scooter und der Software BWFlasher.",
+        "name": "Xiaomi E-Scooter entdrosseln: Firmware mit dem Tuning-Chip flashen",
+        "description": "Anleitung von Einfach Scooter, um einen Xiaomi E-Scooter zu entdrosseln: Mit dem Tuning-Chip und der Software BWFlasher wird eine neue Firmware auf die Steuerung des Scooters übertragen.",
         "inLanguage": "de-DE",
         "totalTime": "PT30M",
         "publisher": { "@id": "https://einfach-scooter.de/#organisation" },
         "supply": [
-          { "@type": "HowToSupply", "name": "Xiaomi- oder Brightway-Scooter" },
+          { "@type": "HowToSupply", "name": "Xiaomi E-Scooter" },
           { "@type": "HowToSupply", "name": "Firmware-Datei für das eigene Modell" }
         ],
         "tool": [
-          { "@type": "HowToTool", "name": "Tuning-Adapter von Einfach Scooter" },
+          { "@type": "HowToTool", "name": "Tuning-Chip von Einfach Scooter" },
           { "@type": "HowToTool", "name": "Windows-PC oder Laptop" },
           { "@type": "HowToTool", "name": "BWFlasher" }
         ],
         "step": [
           { "@type": "HowToStep", "position": 1, "name": "Scooter einschalten", "text": "Scooter einschalten und das Rücklicht aktivieren. Daran erkennst du während des gesamten Vorgangs, ob der Scooter mit Strom versorgt ist." },
-          { "@type": "HowToStep", "position": 2, "name": "Lenker abnehmen", "text": "Den Lenker vom Scooter abmontieren." },
-          { "@type": "HowToStep", "position": 3, "name": "Adapter anschließen", "text": "Das Dashboard-Kabel trennen und den Tuning-Adapter einstecken." },
-          { "@type": "HowToStep", "position": 4, "name": "Stromversorgung prüfen", "text": "Kontrollieren, ob das Rücklicht weiterhin leuchtet. Der Scooter darf nicht ausgehen." },
-          { "@type": "HowToStep", "position": 5, "name": "Mit dem PC verbinden", "text": "Den Adapter per USB mit dem PC verbinden und BWFlasher öffnen." },
-          { "@type": "HowToStep", "position": 6, "name": "COM-Port wählen", "text": "Im Feld Serial Port den richtigen COM-Port auswählen. In den meisten Fällen ist das nicht COM1." },
-          { "@type": "HowToStep", "position": 7, "name": "Firmware auswählen", "text": "Über den Button Browse die zuvor heruntergeladene Firmware-Datei für das eigene Scooter-Modell auswählen." },
-          { "@type": "HowToStep", "position": 8, "name": "Debug Mode aktivieren", "text": "Debug Mode aktivieren und anschließend erneut prüfen, ob das Rücklicht leuchtet." },
+          { "@type": "HowToStep", "position": 2, "name": "Lenker abnehmen", "text": "Den Lenker abmontieren." },
+          { "@type": "HowToStep", "position": 3, "name": "Tuning-Chip anschließen", "text": "Das Dashboard-Kabel trennen und den Tuning-Chip einstecken." },
+          { "@type": "HowToStep", "position": 4, "name": "Stromversorgung prüfen", "text": "Kontrollieren: Das Rücklicht muss weiterhin leuchten. Der Scooter darf nicht ausgehen." },
+          { "@type": "HowToStep", "position": 5, "name": "Mit dem PC verbinden", "text": "Den Tuning-Chip per USB mit dem PC verbinden und BWFlasher öffnen." },
+          { "@type": "HowToStep", "position": 6, "name": "COM-Port wählen", "text": "Im Feld Serial Port den richtigen COM-Port wählen. Das ist in den meisten Fällen nicht COM1." },
+          { "@type": "HowToStep", "position": 7, "name": "Firmware auswählen", "text": "Über den Button Browse die Firmware-Datei auswählen, die du in Abschnitt 03 für dein Modell heruntergeladen hast." },
+          { "@type": "HowToStep", "position": 8, "name": "Debug Mode aktivieren", "text": "Debug Mode aktivieren und danach erneut prüfen, ob das Rücklicht leuchtet." },
           { "@type": "HowToStep", "position": 9, "name": "Übertragung starten", "text": "Auf Start Update klicken. Dass das Rücklicht dabei ausgeht, ist normal." },
-          { "@type": "HowToStep", "position": 10, "name": "Abschließen", "text": "Warten, bis die Fortschrittsleiste 100 Prozent erreicht hat und die Konsole keine Meldungen mehr ausgibt. Danach den Adapter abziehen und den Scooter wieder zusammenbauen." }
+          { "@type": "HowToStep", "position": 10, "name": "Abschließen", "text": "Warten, bis die Fortschrittsleiste 100 % erreicht hat und die Konsole keine Meldungen mehr ausgibt. Anschließend den Tuning-Chip abziehen und den Scooter wieder zusammenbauen." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://einfach-scooter.de/#faq",
+        "inLanguage": "de-DE",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wie entdrossele ich meinen Xiaomi E-Scooter?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Der Scooter bekommt eine neue Firmware. Dazu steckst du den Tuning-Chip zwischen das Dashboard-Kabel des Scooters und deinen Windows-PC, wählst in BWFlasher den richtigen COM-Port und die Firmware-Datei für dein Modell und startest die Übertragung. Die vollständige Anleitung mit allen zehn Schritten steht auf dieser Seite. Ohne den Tuning-Chip lässt sich die Steuerung des Scooters nicht ansprechen." }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie mache ich meinen E-Scooter schneller?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Die Höchstgeschwindigkeit ist in der Firmware der Steuerung hinterlegt, nicht in der Mechanik. Wer seinen E-Scooter schneller machen möchte, muss deshalb die Firmware austauschen. Genau dafür sind der Tuning-Chip und das Programm BWFlasher da." }
+          },
+          {
+            "@type": "Question",
+            "name": "Was ist ein Tuning-Chip und wozu brauche ich ihn?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Der Tuning-Chip – auch Flash-Adapter oder USB-Adapter genannt – ist die Verbindung zwischen deinem Xiaomi Scooter und dem PC. Er wird anstelle des Displays an das Dashboard-Kabel gesteckt und per USB mit dem Rechner verbunden. Über die App oder per Bluetooth lässt sich die Firmware nicht austauschen, deshalb führt kein Weg an dem Chip vorbei." }
+          },
+          {
+            "@type": "Question",
+            "name": "Welche Firmware brauche ich für meinen Scooter?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Die Firmware ist modellabhängig. Für Xiaomi 4 Pro 2nd, Xiaomi 5, Xiaomi 5 Pro und Xiaomi 5 Max steht die passende Datei auf dieser Seite bereit. Lade ausschließlich die Datei für dein Modell herunter, eine falsche Firmware kann den Scooter unbrauchbar machen." }
+          },
+          {
+            "@type": "Question",
+            "name": "Was ist BWFlasher?",
+            "acceptedAnswer": { "@type": "Answer", "text": "BWFlasher ist ein kostenloses Open-Source-Programm für Windows, das die Firmware auf die Steuerung des Scooters überträgt. Wir stellen es zum Download bereit, entwickelt wird es vom ScooterTeam. Ohne passenden Adapter kann das Programm den Scooter nicht erreichen." }
+          },
+          {
+            "@type": "Question",
+            "name": "Welcher COM-Port ist der richtige?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sobald der FTDI-Treiber installiert ist und der Tuning-Chip am USB-Anschluss steckt, taucht er im Windows-Gerätemanager unter Anschlüsse (COM & LPT) als USB Serial Port auf. Diesen Eintrag wählst du in BWFlasher unter Serial Port aus. COM1 ist es in den meisten Fällen nicht." }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum erkennt BWFlasher meinen Scooter nicht?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Meist fehlt der FTDI-Treiber oder der Scooter hat sich abgeschaltet. Prüfe der Reihe nach: Leuchtet das Rücklicht? Ist der Treiber installiert und der PC danach neu gestartet worden? Ist der richtige COM-Port ausgewählt? Sitzen Dashboard-Kabel, Tuning-Chip und USB-Stecker fest?" }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum bleibt die Übertragung bei 0 % stehen?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Dann bekommt BWFlasher keine Antwort vom Scooter. Prüfe, ob der Scooter eingeschaltet ist und das Rücklicht leuchtet und ob alle Verbindungen fest sitzen. Danach das Programm schließen, den Scooter aus- und wieder einschalten und den Vorgang neu starten." }
+          },
+          {
+            "@type": "Question",
+            "name": "Das Programm stürzt ab oder reagiert nicht mehr",
+            "acceptedAnswer": { "@type": "Answer", "text": "Scooter ausschalten, kurz warten und wieder einschalten. Anschließend BWFlasher neu starten und den Vorgang von vorne beginnen. Wenn das nicht hilft, melde dich per E-Mail oder über unseren eBay-Shop." }
+          },
+          {
+            "@type": "Question",
+            "name": "Ist das Entdrosseln erlaubt?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Mit der Änderung der Firmware erlischt die Betriebserlaubnis des E-Scooters. Damit entfällt der Versicherungsschutz und der Scooter darf nicht mehr im öffentlichen Straßenverkehr gefahren werden. Auf privatem Gelände ist die Nutzung zulässig. Informiere dich vorher über die Vorgaben in deinem Land." }
+          }
         ]
       }
     ]
@@ -111,7 +171,7 @@
 
     <div class="header-nav">
       <a class="header-link" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener"
-         data-i18n="nav.shop">eBay-Shop</a>
+         data-i18n="nav.shop">Tuning-Chip kaufen</a>
       <nav class="lang-switch" aria-label="Sprachauswahl" data-i18n-aria-label="nav.lang.aria">
         <button type="button" class="active" data-lang="de" aria-pressed="true" lang="de">DE</button>
         <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
@@ -127,39 +187,69 @@
   <section class="hero" aria-labelledby="hero-title">
     <p class="kicker" data-i18n="hero.kicker">Anleitung · Einfach Scooter</p>
 
-    <h1 id="hero-title" data-i18n="hero.title">Scooter flashen mit dem Tuning-Adapter von Einfach Scooter</h1>
+    <h1 id="hero-title" data-i18n="hero.title">Xiaomi E-Scooter entdrosseln – mit dem Tuning-Chip von Einfach Scooter</h1>
 
-    <p class="lead" data-i18n="hero.lead">Diese Seite ist die offizielle Anleitung zu den Tuning-Adaptern von Einfach Scooter. Sie führt dich durch das Aufspielen der Firmware auf Xiaomi- und Brightway-Scootern – von den nötigen Downloads bis zum fertig zusammengebauten Scooter.</p>
+    <p class="lead" data-i18n="hero.lead">Du willst deinen E-Scooter schneller machen? Die Höchstgeschwindigkeit steckt in der Firmware der Steuerung. Mit dem Tuning-Chip von Einfach Scooter spielst du eine neue Firmware auf deinen Xiaomi Scooter und entdrosselst ihn in rund 30 Minuten – ohne Löten und ohne Werkstatt. Diese Seite ist die vollständige Anleitung dazu.</p>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#anleitung" data-i18n="hero.cta.guide">Zur Anleitung</a>
-      <a class="btn btn-secondary" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
-        <span data-i18n="hero.cta.shop">Adapter im eBay-Shop</span>
+      <a class="btn btn-primary" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
+        <span data-i18n="hero.cta.shop">Tuning-Chip im eBay-Shop kaufen</span>
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
       </a>
+      <a class="btn btn-secondary" href="#anleitung" data-i18n="hero.cta.guide">Zur Anleitung</a>
     </div>
 
     <p class="notice notice-warn" role="note">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14.5 13.5h-13z"/><path d="M8 6.5v3"/><path d="M8 11.4v.1"/></svg>
-      <span data-i18n="hero.warning">Firmware-Änderungen erfolgen auf eigene Verantwortung. Beachte die gesetzlichen Vorgaben in deinem Land: Betriebserlaubnis, Garantie und Versicherungsschutz können entfallen.</span>
+      <span data-i18n="hero.warning">Mit dem Entdrosseln erlischt die Betriebserlaubnis deines E-Scooters: Versicherungsschutz und Zulassung für öffentliche Straßen entfallen. Nutze den Scooter danach nur auf privatem Gelände und beachte die gesetzlichen Vorgaben in deinem Land. Die Firmware-Änderung erfolgt auf eigene Verantwortung.</span>
     </p>
   </section>
 
-  <!-- 01 – DOWNLOADS -->
-  <section class="section" id="downloads" aria-labelledby="h-downloads">
+  <!-- 01 – TUNING-CHIP -->
+  <section class="section" id="tuning-chip" aria-labelledby="h-chip">
     <div class="section-head">
       <span class="num">01</span>
+      <h2 id="h-chip" data-i18n="sec.chip">Der Tuning-Chip für deinen Xiaomi Scooter</h2>
+    </div>
+
+    <div class="product">
+      <div class="product-text">
+        <h3 data-i18n="chip.title">Ohne Tuning-Chip geht es nicht</h3>
+        <p data-i18n="chip.p1">Die Firmware lässt sich weder über die App noch per Bluetooth austauschen. Der Scooter muss über das Kabel am Display angesprochen werden – und genau dafür ist der Tuning-Chip da. Er wird auch Flash-Adapter oder USB-Adapter genannt und sitzt zwischen dem Dashboard-Kabel deines Xiaomi Scooters und dem USB-Anschluss deines Windows-PCs.</p>
+        <p data-i18n="chip.p2">Den passenden Tuning-Chip mit Dashboard-Kabel bekommst du direkt bei uns im eBay-Shop. Firmware, diese Anleitung und der Support per E-Mail sind kostenlos dabei.</p>
+        <ul>
+          <li data-i18n="chip.f1">Passend für Xiaomi 4 Pro 2nd, Xiaomi 5, Xiaomi 5 Pro und Xiaomi 5 Max</li>
+          <li data-i18n="chip.f2">Kein Löten, keine dauerhafte Veränderung an der Hardware</li>
+          <li data-i18n="chip.f3">Mehrfach verwendbar – auch für weitere Scooter</li>
+          <li data-i18n="chip.f4">Firmware, Anleitung und Support inklusive</li>
+        </ul>
+      </div>
+
+      <div class="product-cta">
+        <a class="btn btn-primary" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
+          <span data-i18n="chip.cta">Jetzt im eBay-Shop bestellen</span>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
+        </a>
+        <p class="product-note" data-i18n="chip.note">Bestellung und Versand über eBay. Fragen beantworten wir per E-Mail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 – DOWNLOADS -->
+  <section class="section" id="downloads" aria-labelledby="h-downloads">
+    <div class="section-head">
+      <span class="num">02</span>
       <h2 id="h-downloads">Downloads</h2>
     </div>
 
-    <p class="section-intro" data-i18n="dl.intro">Beide Programme werden auf dem Windows-PC benötigt. BWFlasher ist ein freies Open-Source-Programm, der FTDI-Treiber stammt vom Hersteller des Chips im Adapter.</p>
+    <p class="section-intro" data-i18n="dl.intro">Zusätzlich zum Tuning-Chip brauchst du zwei Programme auf deinem Windows-PC. BWFlasher überträgt die Firmware, der FTDI-Treiber sorgt dafür, dass Windows den Chip überhaupt erkennt. Beides ist kostenlos.</p>
 
     <div class="item-list">
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">BWFlasher</div>
-          <p class="item-desc" data-i18n="dl.flasher.desc">Programm zum Aufspielen der Firmware über den Adapter. Version 0.6.0 für Windows (64 Bit).</p>
+          <h3 class="item-title">BWFlasher</h3>
+          <p class="item-desc" data-i18n="dl.flasher.desc">Programm zum Aufspielen der Firmware über den Tuning-Chip. Version 0.6.0 für Windows (64 Bit).</p>
         </div>
         <a class="btn btn-quiet"
            href="https://github.com/scooterteam/bw-flasher/releases/download/v0.6.0/bwflasher-v0.6.0-windows-x64.exe"
@@ -172,8 +262,8 @@
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">FTDI USB-Treiber</div>
-          <p class="item-desc" data-i18n="dl.driver.desc">Damit Windows den Adapter als COM-Port erkennt. Für Windows 10 und 11.</p>
+          <h3 class="item-title" data-i18n="dl.driver.title">FTDI USB-Treiber</h3>
+          <p class="item-desc" data-i18n="dl.driver.desc">Damit Windows den Tuning-Chip als COM-Port erkennt. Für Windows 10 und 11.</p>
         </div>
         <a class="btn btn-quiet"
            href="https://ftdichip.com/wp-content/uploads/2025/03/CDM2123620_Setup.zip"
@@ -187,21 +277,21 @@
     </div>
   </section>
 
-  <!-- 02 – FIRMWARE -->
+  <!-- 03 – FIRMWARE -->
   <section class="section" id="firmware" aria-labelledby="h-firmware">
     <div class="section-head">
-      <span class="num">02</span>
-      <h2 id="h-firmware" data-i18n="sec.firmware">Firmware auswählen</h2>
+      <span class="num">03</span>
+      <h2 id="h-firmware" data-i18n="sec.firmware">Firmware für dein Xiaomi Modell</h2>
     </div>
 
-    <p class="section-intro" data-i18n="fw.intro">Lade ausschließlich die Datei für dein Modell herunter. Eine Firmware für ein anderes Modell kann den Scooter unbrauchbar machen.</p>
+    <p class="section-intro" data-i18n="fw.intro">Ob du einen Xiaomi 4 Pro 2nd entdrosseln, deinen Xiaomi 5 flashen oder beim Xiaomi 5 Max die Firmware aufspielen willst: Für jedes Modell gibt es eine eigene Datei. Lade ausschließlich die Firmware für dein Modell herunter – eine Firmware für ein anderes Modell kann den Scooter unbrauchbar machen. Übertragen wird sie anschließend mit dem Tuning-Chip.</p>
 
     <div class="item-list">
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">Xiaomi 4 Pro 2nd</div>
-          <div class="item-sub">Mi Scooter 4 Pro 2nd Gen</div>
+          <h3 class="item-title">Xiaomi 4 Pro 2nd</h3>
+          <div class="item-sub">Firmware für Mi Scooter 4 Pro 2nd Gen</div>
         </div>
         <a class="btn btn-quiet"
            href="https://drive.google.com/file/d/1cXcERYIk_3RZgrzDqdbPtiiTFW8TCHFD/view?usp=drive_link"
@@ -214,8 +304,8 @@
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">Xiaomi 5</div>
-          <div class="item-sub">Mi Scooter 5</div>
+          <h3 class="item-title">Xiaomi 5</h3>
+          <div class="item-sub">Firmware für Mi Scooter 5</div>
         </div>
         <a class="btn btn-quiet"
            href="https://drive.google.com/file/d/1UgfIK0ndv4GoPXxU4kr4a2miVh7mh7or/view?usp=drive_link"
@@ -228,8 +318,8 @@
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">Xiaomi 5 Pro</div>
-          <div class="item-sub">Mi Scooter 5 Pro</div>
+          <h3 class="item-title">Xiaomi 5 Pro</h3>
+          <div class="item-sub">Firmware für Mi Scooter 5 Pro</div>
         </div>
         <a class="btn btn-quiet"
            href="https://drive.google.com/file/d/1-yK7X5Hzifv_BhWmn2svs27mrVb_5btl/view?usp=drive_link"
@@ -242,8 +332,8 @@
 
       <div class="item">
         <div class="item-text">
-          <div class="item-title">Xiaomi 5 Max</div>
-          <div class="item-sub">Mi Scooter 5 Max</div>
+          <h3 class="item-title">Xiaomi 5 Max</h3>
+          <div class="item-sub">Firmware für Mi Scooter 5 Max</div>
         </div>
         <a class="btn btn-quiet"
            href="https://drive.google.com/file/d/1B_A8j-EfOqr08F6HRNw8s_yZGOCofx04/view?usp=drive_link"
@@ -257,10 +347,10 @@
     </div>
   </section>
 
-  <!-- 03 – VORBEREITUNG -->
+  <!-- 04 – VORBEREITUNG -->
   <section class="section" id="vorbereitung" aria-labelledby="h-prep">
     <div class="section-head">
-      <span class="num">03</span>
+      <span class="num">04</span>
       <h2 id="h-prep" data-i18n="sec.prep">Vorbereitung</h2>
     </div>
 
@@ -270,9 +360,9 @@
         <h3 data-i18n="prep.need.title">Was du brauchst</h3>
         <ul>
           <li data-i18n="prep.need.1">Windows-PC oder Laptop</li>
-          <li data-i18n="prep.need.2">Tuning-Adapter von Einfach Scooter mit passendem Dashboard-Kabel</li>
-          <li data-i18n="prep.need.3">BWFlasher und FTDI-Treiber (Abschnitt 01)</li>
-          <li data-i18n="prep.need.4">Firmware-Datei für dein Modell (Abschnitt 02)</li>
+          <li data-i18n="prep.need.2">Tuning-Chip von Einfach Scooter mit passendem Dashboard-Kabel</li>
+          <li data-i18n="prep.need.3">BWFlasher und FTDI-Treiber (Abschnitt 02)</li>
+          <li data-i18n="prep.need.4">Firmware-Datei für dein Xiaomi Modell (Abschnitt 03)</li>
           <li data-i18n="prep.need.5">Scooter mit ausreichend geladenem Akku</li>
         </ul>
       </div>
@@ -282,21 +372,23 @@
         <ol>
           <li data-i18n="prep.setup.1">BWFlasher starten und die Installation abschließen.</li>
           <li data-i18n="prep.setup.2"><code>CDM2123620_Setup</code> entpacken und das Treiber-Setup ausführen.</li>
-          <li data-i18n="prep.setup.3">PC neu starten, damit der Adapter als COM-Port erkannt wird.</li>
+          <li data-i18n="prep.setup.3">PC neu starten, damit der Tuning-Chip als COM-Port erkannt wird.</li>
         </ol>
       </div>
 
     </div>
   </section>
 
-  <!-- 04 – ANLEITUNG -->
+  <!-- 05 – ANLEITUNG -->
   <section class="section" id="anleitung" aria-labelledby="h-steps">
     <div class="section-head">
-      <span class="num">04</span>
-      <h2 id="h-steps" data-i18n="sec.steps">Schritt für Schritt</h2>
+      <span class="num">05</span>
+      <h2 id="h-steps" data-i18n="sec.steps">Xiaomi Scooter flashen – Schritt für Schritt</h2>
     </div>
 
-    <ol class="steps" aria-label="Anleitung zum Aufspielen der Firmware" data-i18n-aria-label="steps.list.aria">
+    <p class="section-intro" data-i18n="steps.intro">Nimm dir etwa 30 Minuten Zeit und arbeite die Schritte der Reihe nach ab. Wichtig ist vor allem eines: Der Scooter muss während des gesamten Vorgangs eingeschaltet bleiben.</p>
+
+    <ol class="steps" aria-label="Anleitung zum Entdrosseln des Xiaomi Scooters" data-i18n-aria-label="steps.list.aria">
 
       <li class="step">
         <div class="step-num">01</div>
@@ -310,7 +402,7 @@
 
       <li class="step">
         <div class="step-num">03</div>
-        <div class="step-body" data-i18n="steps.3">Das <strong>Dashboard-Kabel trennen</strong> und den Tuning-Adapter einstecken.</div>
+        <div class="step-body" data-i18n="steps.3">Das <strong>Dashboard-Kabel trennen</strong> und den Tuning-Chip einstecken.</div>
       </li>
 
       <li class="step">
@@ -320,7 +412,7 @@
 
       <li class="step">
         <div class="step-num">05</div>
-        <div class="step-body" data-i18n="steps.5">Den Adapter per USB mit dem PC verbinden und <strong>BWFlasher öffnen</strong>.</div>
+        <div class="step-body" data-i18n="steps.5">Den Tuning-Chip per USB mit dem PC verbinden und <strong>BWFlasher öffnen</strong>.</div>
       </li>
 
       <li class="step">
@@ -330,7 +422,7 @@
 
       <li class="step">
         <div class="step-num">07</div>
-        <div class="step-body" data-i18n="steps.7">Über den Button <code>Browse</code> die <strong>Firmware-Datei auswählen</strong>, die du in Abschnitt 02 für dein Modell heruntergeladen hast.</div>
+        <div class="step-body" data-i18n="steps.7">Über den Button <code>Browse</code> die <strong>Firmware-Datei auswählen</strong>, die du in Abschnitt 03 für dein Modell heruntergeladen hast.</div>
       </li>
 
       <li class="step">
@@ -345,59 +437,146 @@
 
       <li class="step">
         <div class="step-num">10</div>
-        <div class="step-body" data-i18n="steps.10">Warten, bis die Fortschrittsleiste <strong>100&nbsp;%</strong> erreicht hat und die Konsole keine Meldungen mehr ausgibt. Anschließend den Adapter abziehen und den Scooter wieder zusammenbauen.</div>
+        <div class="step-body" data-i18n="steps.10">Warten, bis die Fortschrittsleiste <strong>100&nbsp;%</strong> erreicht hat und die Konsole keine Meldungen mehr ausgibt. Anschließend den Tuning-Chip abziehen und den Scooter wieder zusammenbauen.</div>
       </li>
 
     </ol>
+
+    <div class="cta-band">
+      <p data-i18n="cta.band">Noch keinen Tuning-Chip? Ohne ihn kommst du nicht an die Steuerung deines Scooters – du bekommst ihn passend zu deinem Modell bei uns.</p>
+      <a class="btn btn-primary" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
+        <span data-i18n="cta.band.btn">Tuning-Chip kaufen</span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
+      </a>
+    </div>
   </section>
 
-  <!-- 05 – FEHLERBEHEBUNG -->
-  <section class="section" id="hilfe" aria-labelledby="h-trouble">
+  <!-- 06 – HÄUFIGE FRAGEN -->
+  <section class="section" id="faq" aria-labelledby="h-faq">
     <div class="section-head">
-      <span class="num">05</span>
-      <h2 id="h-trouble" data-i18n="sec.trouble">Fehlerbehebung</h2>
+      <span class="num">06</span>
+      <h2 id="h-faq" data-i18n="sec.faq">Häufige Fragen</h2>
     </div>
 
     <div class="faq">
 
       <div class="faq-item">
         <button type="button" class="faq-trigger" aria-expanded="false">
-          <span data-i18n="trouble.stuck.title">Die Übertragung bleibt bei 0&nbsp;% stehen</span>
+          <span data-i18n="faq.entdrosseln.q">Wie entdrossele ich meinen Xiaomi E-Scooter?</span>
           <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
         </button>
         <div class="faq-body" hidden="">
+          <p data-i18n="faq.entdrosseln.a">Der Scooter bekommt eine neue Firmware. Dazu steckst du den Tuning-Chip zwischen das Dashboard-Kabel des Scooters und deinen Windows-PC, wählst in BWFlasher den richtigen COM-Port und die Firmware-Datei für dein Modell und startest die Übertragung. Die vollständige Anleitung mit allen zehn Schritten steht weiter oben auf dieser Seite. Ohne den Tuning-Chip lässt sich die Steuerung des Scooters nicht ansprechen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.schneller.q">Wie mache ich meinen E-Scooter schneller?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.schneller.a">Die Höchstgeschwindigkeit ist in der Firmware der Steuerung hinterlegt, nicht in der Mechanik. Wer seinen E-Scooter schneller machen möchte, muss deshalb die Firmware austauschen – an den Bauteilen selbst lässt sich nichts umstellen. Genau dafür sind der Tuning-Chip und das Programm BWFlasher da.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.chip.q">Was ist ein Tuning-Chip und wozu brauche ich ihn?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.chip.a">Der Tuning-Chip – auch Flash-Adapter oder USB-Adapter genannt – ist die Verbindung zwischen deinem Xiaomi Scooter und dem PC. Er wird anstelle des Displays an das Dashboard-Kabel gesteckt und per USB mit dem Rechner verbunden. Über die App oder per Bluetooth lässt sich die Firmware nicht austauschen, deshalb führt kein Weg an dem Chip vorbei.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.firmware.q">Welche Firmware brauche ich für meinen Scooter?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.firmware.a">Die Firmware ist modellabhängig. Für Xiaomi 4 Pro 2nd, Xiaomi 5, Xiaomi 5 Pro und Xiaomi 5 Max steht die passende Datei in Abschnitt 03 bereit. Lade ausschließlich die Datei für dein Modell herunter – eine falsche Firmware kann den Scooter unbrauchbar machen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.bwflasher.q">Was ist BWFlasher?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.bwflasher.a">BWFlasher ist ein kostenloses Open-Source-Programm für Windows, das die Firmware auf die Steuerung des Scooters überträgt. Wir stellen es in Abschnitt 02 zum Download bereit; entwickelt wird es vom ScooterTeam. Ohne passenden Adapter kann das Programm den Scooter nicht erreichen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.comport.q">Welcher COM-Port ist der richtige?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.comport.a">Sobald der FTDI-Treiber installiert ist und der Tuning-Chip am USB-Anschluss steckt, taucht er im Windows-Gerätemanager unter <code>Anschlüsse (COM &amp; LPT)</code> als <code>USB Serial Port</code> auf. Diesen Eintrag wählst du in BWFlasher unter <code>Serial Port</code> aus. <code>COM1</code> ist es in den meisten Fällen nicht.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.notfound.q">Warum erkennt BWFlasher meinen Scooter nicht?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.notfound.a">Meist fehlt der FTDI-Treiber oder der Scooter hat sich abgeschaltet. Prüfe der Reihe nach:</p>
           <ul>
-            <li data-i18n="trouble.stuck.1">Ist der Scooter eingeschaltet? Das Rücklicht sollte leuchten.</li>
-            <li data-i18n="trouble.stuck.2">Sitzen alle Verbindungen fest – Kabel, Adapter und USB?</li>
-            <li data-i18n="trouble.stuck.3">Programm schließen, Scooter aus- und wieder einschalten, erneut versuchen.</li>
+            <li data-i18n="faq.notfound.1">Leuchtet das Rücklicht? Der Scooter muss eingeschaltet bleiben.</li>
+            <li data-i18n="faq.notfound.2">Ist der FTDI-Treiber installiert und der PC danach neu gestartet worden?</li>
+            <li data-i18n="faq.notfound.3">Ist unter <code>Serial Port</code> der richtige COM-Port ausgewählt?</li>
+            <li data-i18n="faq.notfound.4">Sitzen Dashboard-Kabel, Tuning-Chip und USB-Stecker fest?</li>
           </ul>
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-trigger" aria-expanded="false">
-          <span data-i18n="trouble.crash.title">Das Programm stürzt ab oder reagiert nicht mehr</span>
+          <span data-i18n="faq.stuck.q">Warum bleibt die Übertragung bei 0&nbsp;% stehen?</span>
           <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
         </button>
         <div class="faq-body" hidden="">
-          <ul>
-            <li data-i18n="trouble.crash.1">Scooter ausschalten, kurz warten und wieder einschalten.</li>
-            <li data-i18n="trouble.crash.2">BWFlasher neu starten und den Vorgang von vorne beginnen.</li>
-          </ul>
+          <p data-i18n="faq.stuck.a">Dann bekommt BWFlasher keine Antwort vom Scooter. Prüfe, ob der Scooter eingeschaltet ist und das Rücklicht leuchtet, und ob alle Verbindungen fest sitzen. Danach das Programm schließen, den Scooter aus- und wieder einschalten und den Vorgang neu starten.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.crash.q">Das Programm stürzt ab oder reagiert nicht mehr</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.crash.a">Scooter ausschalten, kurz warten und wieder einschalten. Anschließend BWFlasher neu starten und den Vorgang von vorne beginnen.</p>
           <p class="notice notice-ok">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.5 3.5L13 5"/></svg>
-            <span data-i18n="trouble.crash.note">Wenn nichts davon hilft, melde dich bei uns – per E-Mail oder direkt über den eBay-Shop. Wir helfen dir weiter.</span>
+            <span data-i18n="faq.crash.note">Wenn nichts davon hilft, melde dich bei uns – per E-Mail oder über den eBay-Shop. Wir helfen dir weiter.</span>
           </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="faq.legal.q">Ist das Entdrosseln erlaubt?</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
+        </button>
+        <div class="faq-body" hidden="">
+          <p data-i18n="faq.legal.a">Mit der Änderung der Firmware erlischt die Betriebserlaubnis des E-Scooters. Damit entfällt der Versicherungsschutz, und der Scooter darf nicht mehr im öffentlichen Straßenverkehr gefahren werden. Auf privatem Gelände ist die Nutzung zulässig. Informiere dich vor dem Entdrosseln über die Vorgaben in deinem Land.</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 06 – ÜBER & KONTAKT -->
+  <!-- 07 – ÜBER & KONTAKT -->
   <section class="section" id="kontakt" aria-labelledby="h-about">
     <div class="section-head">
-      <span class="num">06</span>
+      <span class="num">07</span>
       <h2 id="h-about" data-i18n="sec.about">Über Einfach Scooter</h2>
     </div>
 
@@ -405,13 +584,13 @@
 
       <div class="panel">
         <h3 data-i18n="about.title">Wer wir sind</h3>
-        <p data-i18n="about.p1">Einfach Scooter verkauft Tuning-Adapter für elektrische Scooter von Xiaomi und Brightway. Der Adapter wird zwischen Scooter und Windows-PC gesteckt und stellt die Verbindung zur Steuerung her, über die sich die Firmware aufspielen lässt.</p>
-        <p data-i18n="about.p2">Diese Seite gehört zum Adapter: Sie enthält die passende Firmware, die benötigten Programme und die vollständige Anleitung. Alle Adapter versenden wir über unseren eBay-Shop.</p>
+        <p data-i18n="about.p1">Einfach Scooter verkauft Tuning-Chips für Xiaomi E-Scooter. Der Chip wird zwischen Scooter und Windows-PC gesteckt und stellt die Verbindung zur Steuerung her – darüber lässt sich die Firmware austauschen und der Scooter entdrosseln.</p>
+        <p data-i18n="about.p2">Diese Seite gehört zum Tuning-Chip: Sie enthält die passende Firmware, die benötigten Programme und die vollständige Anleitung. Bestellt wird über unseren eBay-Shop.</p>
       </div>
 
       <div class="panel">
         <h3 data-i18n="contact.title">Kontakt &amp; Support</h3>
-        <p data-i18n="contact.p1">Fragen zum Adapter oder zur Anleitung beantworten wir gerne. Schreib uns am besten mit Angabe deines Scooter-Modells.</p>
+        <p data-i18n="contact.p1">Fragen zum Tuning-Chip oder zur Anleitung beantworten wir gerne. Schreib uns am besten mit Angabe deines Scooter-Modells.</p>
 
         <p class="contact-line">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1"/><path d="m2.5 4.5 5.5 4 5.5-4"/></svg>
@@ -421,7 +600,7 @@
         <p class="contact-line">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
           <a href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
-            <span data-i18n="contact.shop">eBay-Shop von Einfach Scooter</span>
+            <span data-i18n="contact.shop">Tuning-Chips im eBay-Shop von Einfach Scooter</span>
           </a>
         </p>
       </div>
@@ -437,13 +616,13 @@
     <div class="footer-top">
       <div class="footer-brand">Einfach Scooter</div>
       <div class="footer-links">
-        <a href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener" data-i18n="nav.shop">eBay-Shop</a>
+        <a href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener" data-i18n="nav.shop">Tuning-Chip kaufen</a>
         <a href="mailto:support@einfach-scooter.de" data-i18n="footer.contact">Kontakt</a>
+        <a href="#faq" data-i18n="footer.faq">Häufige Fragen</a>
         <a href="https://github.com/scooterteam/bw-flasher" target="_blank" rel="noopener">BWFlasher</a>
-        <a href="https://ftdichip.com" target="_blank" rel="noopener">FTDI</a>
       </div>
     </div>
-    <p class="footer-legal" data-i18n="footer.legal">Einfach Scooter steht in keinem Zusammenhang mit Xiaomi oder Brightway. Firmware-Änderungen erfolgen auf eigene Verantwortung; Betriebserlaubnis, Garantie und Versicherungsschutz können dadurch entfallen. Bitte beachte die gesetzlichen Bestimmungen in deinem Land.</p>
+    <p class="footer-legal" data-i18n="footer.legal">Einfach Scooter steht in keinem Zusammenhang mit Xiaomi. Das Entdrosseln eines E-Scooters lässt die Betriebserlaubnis erlöschen; Versicherungsschutz und Zulassung für den öffentlichen Straßenverkehr entfallen damit. Die Nutzung ist nur auf privatem Gelände zulässig. Firmware-Änderungen erfolgen auf eigene Verantwortung – bitte beachte die gesetzlichen Bestimmungen in deinem Land.</p>
   </div>
 </footer>
 

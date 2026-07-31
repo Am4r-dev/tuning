@@ -162,6 +162,97 @@
 
 .hero .notice { margin-top: 32px; max-width: 68ch; }
 
+/* ─── PRODUKTKASTEN (Tuning-Chip) ────────────────────────────── */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 24px;
+  padding: 22px;
+  border: 1px solid var(--c-accent-line);
+  border-radius: var(--r-md);
+  background: var(--c-accent-soft);
+}
+
+@media (max-width: 640px) {
+  .product { grid-template-columns: 1fr; gap: 18px; }
+}
+
+.product h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.product p {
+  font-size: 13.5px;
+  color: var(--c-muted);
+  line-height: 1.65;
+}
+
+.product p + p { margin-top: 10px; }
+
+.product ul {
+  list-style: none;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.product li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.product li::before {
+  content: '–';
+  color: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.product-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.product-cta .btn { justify-content: center; }
+
+.product-note {
+  font-size: 12px;
+  color: var(--c-faint);
+  line-height: 1.5;
+}
+
+/* ─── KAUFHINWEIS ZWISCHEN DEN ABSCHNITTEN ───────────────────── */
+.cta-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 26px;
+  padding: 16px 18px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.cta-band p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+.cta-band .btn { flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .cta-band { flex-direction: column; align-items: stretch; }
+  .cta-band .btn { justify-content: center; }
+}
+
 /* ─── GERAHMTE LISTE (Downloads, Firmware) ───────────────────── */
 .item-list {
   border: 1px solid var(--c-border);
@@ -343,6 +434,16 @@
 .faq-item.open .chevron { transform: rotate(180deg); }
 
 .faq-body { padding: 0 18px 16px; }
+
+/* :not(.notice) – der Hinweiskasten bringt eigene Farben mit */
+.faq-body p:not(.notice) {
+  font-size: 13.5px;
+  color: var(--c-muted);
+  line-height: 1.65;
+  max-width: 72ch;
+}
+
+.faq-body p:not(.notice) + ul { margin-top: 10px; }
 
 .faq-body ul {
   list-style: none;

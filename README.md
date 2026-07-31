@@ -1,8 +1,12 @@
 # einfach-scooter.de
 
-Website von **Einfach Scooter** – Anleitung zu den Tuning-Adaptern für
-Xiaomi- und Brightway-Scooter. Statische Seite auf GitHub Pages, kein
+Website von **Einfach Scooter** – Anleitung zum Entdrosseln von Xiaomi
+E-Scootern mit dem Tuning-Chip. Statische Seite auf GitHub Pages, kein
 Build-Schritt: `index.html` öffnen genügt.
+
+Produktbegriff ist durchgängig **Tuning-Chip** (mit „Flash-Adapter" und
+„USB-Adapter" als Synonym im Fließtext) – danach wird tatsächlich gesucht,
+nach „Tuning-Adapter" so gut wie nicht.
 
 Lokal mit Server ansehen (nötig, damit Caching und Pfade sich wie live verhalten):
 
