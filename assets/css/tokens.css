@@ -18,7 +18,9 @@
   --c-heading:      #f0f2f4;
   --c-text:         #d5dae0;
   --c-muted:        #98a1ab;
-  --c-faint:        #6b747e;
+  /* Hell genug für WCAG AA (4.5:1) auf --c-surface2, dem hellsten
+     Hintergrund, auf dem das Token vorkommt. Nicht abdunkeln. */
+  --c-faint:        #828c98;
 
   /* Akzent – sparsam einsetzen: Links, Zahlen, Fokus */
   --c-accent:       #6f9dc9;
