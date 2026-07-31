@@ -1,0 +1,382 @@
+/* ─── KOMPONENTEN ────────────────────────────────────────────────
+   Ein Block pro Baustein, jeweils mit seinen eigenen Media Queries.
+   Reihenfolge entspricht dem Seitenaufbau.
+
+   Wiederverwendet wird vor allem:
+   .btn        – alle Schaltflächen und Download-Links
+   .item-list  – gerahmte Liste mit Haarlinien (Downloads, Firmware)
+   .panel      – gerahmter Kasten (Vorbereitung, Kontakt)
+   ──────────────────────────────────────────────────────────────── */
+
+/* ─── SPRACHUMSCHALTER ───────────────────────────────────────── */
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.lang-switch button {
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-family: var(--f-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.lang-switch button:last-child { border-right: none; }
+.lang-switch button:hover { color: var(--c-text); }
+
+.lang-switch button.active {
+  background: var(--c-surface2);
+  color: var(--c-heading);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  font-family: var(--f-sans);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #0f1418;
+}
+
+.btn-primary:hover {
+  background: var(--c-accent-hi);
+  border-color: var(--c-accent-hi);
+  color: #0f1418;
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--c-border-hi);
+  color: var(--c-text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--c-muted);
+  color: var(--c-heading);
+}
+
+/* Schlanke Variante in Listenzeilen */
+.btn-quiet {
+  background: var(--c-surface2);
+  border-color: var(--c-border);
+  color: var(--c-text);
+  font-size: 12.5px;
+  padding: 6px 11px;
+}
+
+.btn-quiet:hover {
+  border-color: var(--c-border-hi);
+  color: var(--c-heading);
+}
+
+.btn .ext { color: var(--c-faint); font-family: var(--f-mono); font-size: 11px; }
+.btn-primary .ext { color: rgba(15,20,24,.55); }
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero {
+  padding: 56px 0 44px;
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: 48px;
+}
+
+.hero .kicker {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--c-faint);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(27px, 4.6vw, 38px);
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  max-width: 20ch;
+}
+
+.hero .lead {
+  margin-top: 18px;
+  font-size: 15.5px;
+  color: var(--c-muted);
+  max-width: 64ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* ─── HINWEISKASTEN ──────────────────────────────────────────── */
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  line-height: 1.6;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-muted);
+}
+
+.notice svg { margin-top: 2px; }
+
+.notice-warn {
+  background: var(--c-warn-soft);
+  border-color: var(--c-warn-line);
+  color: #d6bc8e;
+}
+
+.notice-warn svg { color: var(--c-warn); }
+
+.notice-ok {
+  background: var(--c-ok-soft);
+  border-color: var(--c-ok-line);
+  color: #a2c9b0;
+}
+
+.hero .notice { margin-top: 32px; max-width: 68ch; }
+
+/* ─── GERAHMTE LISTE (Downloads, Firmware) ───────────────────── */
+.item-list {
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.item:last-child { border-bottom: none; }
+
+.item-text { min-width: 0; }
+
+.item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-heading);
+}
+
+.item-sub {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--c-faint);
+  margin-top: 2px;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-top: 4px;
+  max-width: 62ch;
+}
+
+@media (max-width: 640px) {
+  .item { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .item .btn { width: 100%; justify-content: center; }
+}
+
+/* ─── PANEL (Vorbereitung, Kontakt) ──────────────────────────── */
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .panel-grid { grid-template-columns: 1fr; }
+}
+
+.panel {
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  padding: 20px;
+}
+
+.panel h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--c-muted);
+  margin-bottom: 14px;
+}
+
+.panel ul, .panel ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.panel li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.panel ul li::before {
+  content: '–';
+  color: var(--c-faint);
+  flex-shrink: 0;
+}
+
+.panel ol { counter-reset: step; }
+.panel ol li { counter-increment: step; }
+
+.panel ol li::before {
+  content: counter(step) '.';
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--c-faint);
+  flex-shrink: 0;
+  min-width: 15px;
+  margin-top: 1px;
+}
+
+.panel p {
+  font-size: 13.5px;
+  color: var(--c-muted);
+  line-height: 1.65;
+}
+
+.panel p + p { margin-top: 10px; }
+
+/* ─── ARBEITSSCHRITTE ────────────────────────────────────────── */
+.steps {
+  list-style: none;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--c-faint);
+  padding: 15px 0 15px 18px;
+}
+
+.step-body {
+  padding: 15px 18px 15px 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* ─── FEHLERBEHEBUNG (Accordion) ─────────────────────────────── */
+.faq {
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.faq-item { border-bottom: 1px solid var(--c-border); }
+.faq-item:last-child { border-bottom: none; }
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  color: var(--c-text);
+  font-family: var(--f-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-trigger:hover { color: var(--c-heading); }
+
+.faq-trigger .chevron {
+  color: var(--c-faint);
+  transition: transform .2s ease;
+}
+
+.faq-item.open .faq-trigger { color: var(--c-heading); }
+.faq-item.open .chevron { transform: rotate(180deg); }
+
+.faq-body { padding: 0 18px 16px; }
+
+.faq-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faq-body li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--c-muted);
+  line-height: 1.55;
+}
+
+.faq-body li::before {
+  content: '–';
+  color: var(--c-faint);
+  flex-shrink: 0;
+}
+
+.faq-body .notice { margin-top: 14px; }
+
+/* ─── KONTAKT ────────────────────────────────────────────────── */
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  margin-top: 12px;
+}
+
+.contact-line svg { color: var(--c-faint); }
+.contact-line a { text-decoration: none; }
+.contact-line a:hover { text-decoration: underline; }

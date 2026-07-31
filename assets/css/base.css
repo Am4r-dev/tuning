@@ -1,0 +1,63 @@
+/* ─── RESET & BASE ───────────────────────────────────────────────
+   Reset, Element-Defaults und globale Utilities.
+   Keine Komponenten-Styles hier – die liegen in components.css.
+   ──────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--f-sans);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  color: var(--c-heading);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.25;
+}
+
+a { color: var(--c-accent); }
+a:hover { color: var(--c-accent-hi); }
+
+strong { color: var(--c-heading); font-weight: 600; }
+
+code {
+  font-family: var(--f-mono);
+  font-size: .86em;
+  background: var(--c-surface2);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  border-radius: var(--r-sm);
+  padding: .1em .35em;
+  white-space: nowrap;
+}
+
+svg { display: block; flex-shrink: 0; }
+
+/* Sichtbarer Fokus für Tastaturbedienung */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ─── BROWSER-CHROME ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-border-hi); }
+
+::selection { background: var(--c-accent-line); color: var(--c-heading); }

@@ -1,1091 +1,429 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="de">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BWFlasher – Scooter Tuning Guide</title>
-  <meta name="description" content="Schritt-für-Schritt Anleitung zum Tuning deines Xiaomi/Brightway Scooters mit BWFlasher + Patcher. Firmware flashen, Geschwindigkeit anpassen, Cruise Control aktivieren.">
-  <meta name="keywords" content="BWFlasher, Scooter Tuning, Xiaomi Scooter, Brightway, Firmware flashen, Mi4Pro">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="BWFlasher – Scooter Tuning Guide">
-  <meta property="og:description" content="Professionelle Anleitung zum Flashen deines Xiaomi/Brightway Scooters.">
+
+  <!-- ─── SUCHMASCHINEN ──────────────────────────────────────────
+       Der Markenname steht bewusst am Anfang von Titel und
+       Beschreibung und wiederholt sich in Überschrift, Fließtext
+       und den strukturierten Daten weiter unten. -->
+  <title>Einfach Scooter – Tuning-Adapter für Xiaomi- und Brightway-Scooter</title>
+  <meta name="description" content="Einfach Scooter: Tuning-Adapter für Xiaomi- und Brightway-E-Scooter. Die offizielle Anleitung zum Aufspielen der Firmware – Schritt für Schritt, mit Downloads und Support.">
+  <meta name="author" content="Einfach Scooter">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://einfach-scooter.de/">
+
+  <meta property="og:site_name" content="Einfach Scooter">
+  <meta property="og:title" content="Einfach Scooter – Tuning-Adapter für Xiaomi- und Brightway-Scooter">
+  <meta property="og:description" content="Die offizielle Anleitung von Einfach Scooter: Firmware auf Xiaomi- und Brightway-Scooter aufspielen – Schritt für Schritt.">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-
-  <style>
-    /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
-    :root {
-      --c-bg:        #080b10;
-      --c-surface:   #0e1420;
-      --c-surface2:  #131926;
-      --c-border:    #1e2a3a;
-      --c-border2:   #253044;
-
-      --c-text:      #dde6f0;
-      --c-muted:     #667a94;
-      --c-faint:     #3a4d63;
-
-      --c-blue:      #3b9eff;
-      --c-blue-dim:  #1a6fc4;
-      --c-blue-glow: rgba(59,158,255,.18);
-      --c-cyan:      #22d3ee;
-      --c-red:       #f36060;
-      --c-green:     #3dd68c;
-      --c-amber:     #f59e0b;
-
-      --f-display:   'Syne', sans-serif;
-      --f-body:      'Manrope', sans-serif;
-      --f-mono:      'JetBrains Mono', monospace;
-
-      --r-sm:  6px;
-      --r-md:  12px;
-      --r-lg:  20px;
-
-      --shadow-card: 0 2px 20px rgba(0,0,0,.5);
-      --shadow-glow: 0 0 40px rgba(59,158,255,.12);
-
-      --ease-out: cubic-bezier(.22,.68,0,1.2);
-      --ease-smooth: cubic-bezier(.4,0,.2,1);
-
-      --max-w: 860px;
-      --header-h: 60px;
-    }
-
-    /* ─── RESET & BASE ───────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: var(--f-body);
-      background: var(--c-bg);
-      color: var(--c-text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
-
-    /* ─── SCROLL PROGRESS ────────────────────────────────────────── */
-    #progress-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 2px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--c-blue), var(--c-cyan));
-      z-index: 1000;
-      transition: width .1s linear;
-    }
-
-    /* ─── HEADER ─────────────────────────────────────────────────── */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--header-h);
-      z-index: 100;
-      background: rgba(8,11,16,.82);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border-bottom: 1px solid var(--c-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-    }
-
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-brand .logo-mark {
-      width: 30px;
-      height: 30px;
-      background: linear-gradient(135deg, var(--c-blue), var(--c-cyan));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-      box-shadow: 0 0 16px rgba(59,158,255,.35);
-    }
-
-    .header-brand span.wordmark {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--c-text);
-      letter-spacing: .02em;
-    }
-
-    /* Language switcher */
-    .lang-switch {
-      display: flex;
-      gap: 4px;
-      background: var(--c-surface2);
-      border: 1px solid var(--c-border);
-      border-radius: 99px;
-      padding: 3px;
-    }
-
-    .lang-switch button {
-      background: transparent;
-      border: none;
-      color: var(--c-muted);
-      font-family: var(--f-body);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 99px;
-      cursor: pointer;
-      transition: background .2s, color .2s;
-    }
-
-    .lang-switch button.active {
-      background: var(--c-blue);
-      color: #fff;
-    }
-
-    /* ─── MAIN WRAPPER ───────────────────────────────────────────── */
-    main {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: calc(var(--header-h) + 0px) 20px 80px;
-    }
-
-    /* ─── HERO ───────────────────────────────────────────────────── */
-    .hero {
-      padding: 80px 0 64px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 20px; left: 50%;
-      transform: translateX(-50%);
-      width: min(600px, 100vw);
-      height: 300px;
-      background: radial-gradient(ellipse at center, rgba(59,158,255,.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(59,158,255,.1);
-      border: 1px solid rgba(59,158,255,.25);
-      color: var(--c-blue);
-      font-family: var(--f-mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 99px;
-      margin-bottom: 24px;
-    }
-
-    .hero-badge .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--c-cyan);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(.8); }
-    }
-
-    .hero h1 {
-      font-family: var(--f-display);
-      font-size: clamp(32px, 6vw, 58px);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -.03em;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 .accent {
-      background: linear-gradient(135deg, var(--c-blue), var(--c-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--c-muted);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-      font-weight: 400;
-    }
-
-    .warning-banner {
-      display: inline-flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: rgba(243,96,96,.08);
-      border: 1px solid rgba(243,96,96,.25);
-      border-radius: var(--r-md);
-      padding: 12px 16px;
-      font-size: 13px;
-      color: #f39090;
-      text-align: left;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .warning-banner .icon { flex-shrink: 0; margin-top: 1px; font-style: normal; }
-
-    /* ─── SECTION TITLES ─────────────────────────────────────────── */
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .section-label .num {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      color: var(--c-blue);
-      background: rgba(59,158,255,.1);
-      border: 1px solid rgba(59,158,255,.2);
-      border-radius: 4px;
-      padding: 2px 7px;
-      letter-spacing: .06em;
-    }
-
-    .section-label h2 {
-      font-family: var(--f-display);
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -.02em;
-    }
-
-    /* ─── DOWNLOAD SECTION ───────────────────────────────────────── */
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 560px) { .download-grid { grid-template-columns: 1fr; } }
-
-    .dl-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-lg);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: border-color .25s, box-shadow .25s, transform .25s var(--ease-out);
-      cursor: default;
-    }
-
-    .dl-card:hover {
-      border-color: var(--c-blue-dim);
-      box-shadow: var(--shadow-glow);
-      transform: translateY(-2px);
-    }
-
-    .dl-card.primary {
-      border-color: rgba(59,158,255,.3);
-      background: linear-gradient(145deg, rgba(59,158,255,.07), var(--c-surface));
-    }
-
-    .dl-card .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .dl-card.primary .card-icon { background: rgba(59,158,255,.15); }
-    .dl-card.secondary .card-icon { background: rgba(255,255,255,.05); }
-
-    .dl-card-title {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: 15px;
-      color: #fff;
-    }
-
-    .dl-card-desc {
-      font-size: 12.5px;
-      color: var(--c-muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .dl-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      border-radius: var(--r-sm);
-      padding: 9px 16px;
-      font-family: var(--f-body);
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity .2s, transform .15s;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-    }
-
-    .dl-btn:hover { opacity: .88; transform: translateY(-1px); }
-    .dl-btn:active { transform: translateY(0); }
-
-    .dl-btn.prim {
-      background: linear-gradient(135deg, var(--c-blue), var(--c-blue-dim));
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(59,158,255,.3);
-    }
-
-    .dl-btn.sec {
-      background: var(--c-surface2);
-      color: var(--c-text);
-      border: 1px solid var(--c-border2);
-    }
-
-    /* ─── FIRMWARE SELECTOR ──────────────────────────────────────── */
-    .firmware-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 560px) { .firmware-grid { grid-template-columns: 1fr; } }
-
-    .fw-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-md);
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      transition: border-color .25s, box-shadow .25s, transform .25s var(--ease-out);
-    }
-
-    .fw-card:hover {
-      border-color: var(--c-blue-dim);
-      box-shadow: var(--shadow-glow);
-      transform: translateY(-2px);
-    }
-
-    .fw-card-info {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .fw-card-name {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: 13.5px;
-      color: #fff;
-    }
-
-    .fw-card-sub {
-      font-family: var(--f-mono);
-      font-size: 10.5px;
-      color: var(--c-muted);
-      letter-spacing: .04em;
-    }
-
-    .fw-dl-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(59,158,255,.1);
-      border: 1px solid rgba(59,158,255,.22);
-      color: var(--c-blue);
-      font-family: var(--f-mono);
-      font-size: 11px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: var(--r-sm);
-      text-decoration: none;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background .2s, transform .15s;
-      flex-shrink: 0;
-    }
-
-    .fw-dl-btn:hover {
-      background: rgba(59,158,255,.2);
-      transform: translateY(-1px);
-    }
-
-    /* ─── PREP SECTION ───────────────────────────────────────────── */
-    .prep-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 560px) { .prep-grid { grid-template-columns: 1fr; } }
-
-    .prep-card {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-lg);
-      padding: 22px;
-    }
-
-    .prep-card h3 {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--c-cyan);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: 14px;
-    }
-
-    .prep-card ul, .prep-card ol {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .prep-card ul li, .prep-card ol li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13.5px;
-      color: var(--c-text);
-      line-height: 1.5;
-    }
-
-    .prep-card ul li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--c-blue);
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    .prep-card ol { counter-reset: step; }
-    .prep-card ol li { counter-increment: step; }
-    .prep-card ol li::before {
-      content: counter(step);
-      min-width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(59,158,255,.15);
-      border: 1px solid rgba(59,158,255,.3);
-      color: var(--c-blue);
-      font-family: var(--f-mono);
-      font-size: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    code {
-      font-family: var(--f-mono);
-      font-size: 11.5px;
-      background: rgba(59,158,255,.08);
-      border: 1px solid rgba(59,158,255,.18);
-      color: var(--c-cyan);
-      border-radius: 4px;
-      padding: 1px 5px;
-    }
-
-    /* ─── STEP-BY-STEP ───────────────────────────────────────────── */
-    .steps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    .step-item {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 0;
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-md);
-      overflow: hidden;
-      transition: border-color .25s, box-shadow .25s;
-    }
-
-    .step-item:hover {
-      border-color: var(--c-border2);
-      box-shadow: 0 4px 24px rgba(0,0,0,.4);
-    }
-
-    .step-num {
-      background: var(--c-surface2);
-      border-right: 1px solid var(--c-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--f-mono);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--c-blue);
-    }
-
-    .step-body {
-      padding: 14px 18px;
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: var(--c-text);
-    }
-
-    .step-body strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .step-body ul {
-      list-style: none;
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .step-body ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-    }
-
-    .step-body ul li::before {
-      content: '›';
-      color: var(--c-blue);
-      font-size: 16px;
-      line-height: 1.2;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--f-mono);
-      font-size: 10.5px;
-      font-weight: 500;
-      padding: 1px 6px;
-      border-radius: 3px;
-      margin-right: 4px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .tag-blue { background: rgba(59,158,255,.12); border: 1px solid rgba(59,158,255,.25); color: var(--c-blue); }
-    .tag-cyan { background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.25); color: var(--c-cyan); }
-
-    /* ─── TROUBLESHOOTING ACCORDION ──────────────────────────────── */
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 40px;
-    }
-
-    .acc-item {
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-md);
-      overflow: hidden;
-      transition: border-color .25s;
-    }
-
-    .acc-item:has(.acc-body:not([hidden])) {
-      border-color: var(--c-border2);
-    }
-
-    .acc-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: transparent;
-      border: none;
-      color: var(--c-text);
-      font-family: var(--f-body);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: left;
-      gap: 10px;
-      transition: color .2s;
-    }
-
-    .acc-trigger:hover { color: #fff; }
-
-    .acc-trigger .chevron {
-      color: var(--c-muted);
-      font-size: 18px;
-      transition: transform .3s var(--ease-smooth), color .2s;
-      flex-shrink: 0;
-    }
-
-    .acc-item.open .acc-trigger .chevron {
-      transform: rotate(180deg);
-      color: var(--c-blue);
-    }
-
-    .acc-body {
-      padding: 0 20px 18px;
-    }
-
-    .acc-body ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .acc-body ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13.5px;
-      color: var(--c-muted);
-      line-height: 1.55;
-    }
-
-    .acc-body ul li::before {
-      content: '→';
-      color: var(--c-blue);
-      flex-shrink: 0;
-    }
-
-    .acc-body .ok-note {
-      margin-top: 14px;
-      padding: 10px 14px;
-      background: rgba(61,214,140,.07);
-      border: 1px solid rgba(61,214,140,.2);
-      border-radius: var(--r-sm);
-      font-size: 12.5px;
-      color: #5de0a0;
-    }
-
-    /* ─── FADE IN ANIMATION ──────────────────────────────────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .55s var(--ease-smooth), transform .55s var(--ease-smooth);
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── DIVIDER ────────────────────────────────────────────────── */
-    .section-gap { margin-bottom: 48px; }
-
-    /* ─── FOOTER ─────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--c-border);
-      padding: 32px 20px;
-    }
-
-    .footer-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-brand {
-      font-family: var(--f-display);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--c-faint);
-      letter-spacing: .02em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 18px;
-    }
-
-    .footer-links a {
-      color: var(--c-muted);
-      font-size: 13px;
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .footer-links a:hover { color: var(--c-blue); }
-
-    .footer-legal {
-      font-size: 11.5px;
-      color: var(--c-faint);
-      line-height: 1.6;
-    }
-
-    /* ─── SCROLLBAR ──────────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--c-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--c-border2); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--c-muted); }
-
-    /* ─── SELECTION ──────────────────────────────────────────────── */
-    ::selection { background: rgba(59,158,255,.3); color: #fff; }
-  </style>
+  <meta property="og:url" content="https://einfach-scooter.de/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Stylesheets: Tokens → Basis → Layout → Komponenten (Reihenfolge beachten) -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <!-- Skripte: translations.js vor i18n.js, alle mit defer -->
+  <script src="assets/js/translations.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- ─── STRUKTURIERTE DATEN ────────────────────────────────────
+       Sagt Google, dass hinter der Domain das Unternehmen
+       "Einfach Scooter" steht, und verknüpft es mit dem eBay-Shop.
+       Muss inline stehen (JSON-LD lässt sich nicht auslagern). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://einfach-scooter.de/#organisation",
+        "name": "Einfach Scooter",
+        "alternateName": ["Einfach-Scooter", "einfach-scooter.de"],
+        "url": "https://einfach-scooter.de/",
+        "email": "support@einfach-scooter.de",
+        "description": "Einfach Scooter verkauft Tuning-Adapter, mit denen sich die Firmware von Xiaomi- und Brightway-E-Scootern über einen Windows-PC aufspielen lässt.",
+        "areaServed": "DE",
+        "sameAs": ["https://www.ebay.de/usr/einfach_scooter"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://einfach-scooter.de/#website",
+        "url": "https://einfach-scooter.de/",
+        "name": "Einfach Scooter",
+        "alternateName": "Einfach-Scooter",
+        "inLanguage": "de-DE",
+        "publisher": { "@id": "https://einfach-scooter.de/#organisation" }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://einfach-scooter.de/#anleitung",
+        "name": "Scooter-Firmware mit dem Tuning-Adapter von Einfach Scooter aufspielen",
+        "description": "Anleitung zum Aufspielen der Firmware auf Xiaomi- und Brightway-Scooter mit dem Tuning-Adapter von Einfach Scooter und der Software BWFlasher.",
+        "inLanguage": "de-DE",
+        "totalTime": "PT30M",
+        "publisher": { "@id": "https://einfach-scooter.de/#organisation" },
+        "supply": [
+          { "@type": "HowToSupply", "name": "Xiaomi- oder Brightway-Scooter" },
+          { "@type": "HowToSupply", "name": "Firmware-Datei für das eigene Modell" }
+        ],
+        "tool": [
+          { "@type": "HowToTool", "name": "Tuning-Adapter von Einfach Scooter" },
+          { "@type": "HowToTool", "name": "Windows-PC oder Laptop" },
+          { "@type": "HowToTool", "name": "BWFlasher" }
+        ],
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Scooter einschalten", "text": "Scooter einschalten und das Rücklicht aktivieren. Daran erkennst du während des gesamten Vorgangs, ob der Scooter mit Strom versorgt ist." },
+          { "@type": "HowToStep", "position": 2, "name": "Lenker abnehmen", "text": "Den Lenker vom Scooter abmontieren." },
+          { "@type": "HowToStep", "position": 3, "name": "Adapter anschließen", "text": "Das Dashboard-Kabel trennen und den Tuning-Adapter einstecken." },
+          { "@type": "HowToStep", "position": 4, "name": "Stromversorgung prüfen", "text": "Kontrollieren, ob das Rücklicht weiterhin leuchtet. Der Scooter darf nicht ausgehen." },
+          { "@type": "HowToStep", "position": 5, "name": "Mit dem PC verbinden", "text": "Den Adapter per USB mit dem PC verbinden und BWFlasher öffnen." },
+          { "@type": "HowToStep", "position": 6, "name": "COM-Port wählen", "text": "Im Feld Serial Port den richtigen COM-Port auswählen. In den meisten Fällen ist das nicht COM1." },
+          { "@type": "HowToStep", "position": 7, "name": "Firmware auswählen", "text": "Über den Button Browse die zuvor heruntergeladene Firmware-Datei für das eigene Scooter-Modell auswählen." },
+          { "@type": "HowToStep", "position": 8, "name": "Debug Mode aktivieren", "text": "Debug Mode aktivieren und anschließend erneut prüfen, ob das Rücklicht leuchtet." },
+          { "@type": "HowToStep", "position": 9, "name": "Übertragung starten", "text": "Auf Start Update klicken. Dass das Rücklicht dabei ausgeht, ist normal." },
+          { "@type": "HowToStep", "position": 10, "name": "Abschließen", "text": "Warten, bis die Fortschrittsleiste 100 Prozent erreicht hat und die Konsole keine Meldungen mehr ausgibt. Danach den Adapter abziehen und den Scooter wieder zusammenbauen." }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
 
-<div id="progress-bar" role="progressbar" aria-hidden="true"></div>
-
 <!-- ─── HEADER ─────────────────────────────────────────────────── -->
-<header>
-  <div class="header-brand">
-    <div class="logo-mark" aria-hidden="true">⚡</div>
-    <span class="wordmark">BWFlasher</span>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">ES</span>
+      <span class="brand-name">Einfach Scooter</span>
+    </a>
+
+    <div class="header-nav">
+      <a class="header-link" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener"
+         data-i18n="nav.shop">eBay-Shop</a>
+      <nav class="lang-switch" aria-label="Sprachauswahl" data-i18n-aria-label="nav.lang.aria">
+        <button type="button" class="active" data-lang="de" aria-pressed="true" lang="de">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </nav>
+    </div>
   </div>
-  <nav class="lang-switch" role="navigation" aria-label="Sprachauswahl">
-    <button id="btn-de" onclick="setLang('de')" aria-pressed="false" lang="de">DE</button>
-    <button id="btn-en" class="active" onclick="setLang('en')" aria-pressed="true" lang="en">EN</button>
-  </nav>
 </header>
 
 <!-- ─── MAIN ───────────────────────────────────────────────────── -->
 <main>
 
-  <!-- HERO -->
-  <section class="hero fade-in visible" aria-labelledby="hero-title" style="transition-delay: 0ms;">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      <span class="lang lang-de" hidden="">Open-Source · Xiaomi / Brightway</span>
-      <span class="lang lang-en">Open-Source · Xiaomi / Brightway</span>
+  <!-- EINSTIEG -->
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="kicker" data-i18n="hero.kicker">Anleitung · Einfach Scooter</p>
+
+    <h1 id="hero-title" data-i18n="hero.title">Scooter flashen mit dem Tuning-Adapter von Einfach Scooter</h1>
+
+    <p class="lead" data-i18n="hero.lead">Diese Seite ist die offizielle Anleitung zu den Tuning-Adaptern von Einfach Scooter. Sie führt dich durch das Aufspielen der Firmware auf Xiaomi- und Brightway-Scootern – von den nötigen Downloads bis zum fertig zusammengebauten Scooter.</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#anleitung" data-i18n="hero.cta.guide">Zur Anleitung</a>
+      <a class="btn btn-secondary" href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
+        <span data-i18n="hero.cta.shop">Adapter im eBay-Shop</span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
+      </a>
     </div>
-    <h1 id="hero-title">
-      <span class="lang lang-de" hidden="">Dein Scooter,<br><span class="accent">deine Regeln.</span></span>
-      <span class="lang lang-en">Your scooter,<br><span class="accent">your rules.</span></span>
-    </h1>
-    <p class="hero-sub">
-      <span class="lang lang-de" hidden="">Firmware-Modifikationen für Xiaomi &amp; Brightway Scooter – Schritt für Schritt, sauber erklärt.</span>
-      <span class="lang lang-en">Firmware modifications for Xiaomi &amp; Brightway scooters – step by step, clearly explained.</span>
+
+    <p class="notice notice-warn" role="note">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5 14.5 13.5h-13z"/><path d="M8 6.5v3"/><path d="M8 11.4v.1"/></svg>
+      <span data-i18n="hero.warning">Firmware-Änderungen erfolgen auf eigene Verantwortung. Beachte die gesetzlichen Vorgaben in deinem Land: Betriebserlaubnis, Garantie und Versicherungsschutz können entfallen.</span>
     </p>
-    <div class="warning-banner" role="alert">
-      <i class="icon" aria-hidden="true">⚠️</i>
-      <span class="lang lang-de" hidden="">Tuning geschieht auf eigene Verantwortung. Prüfe die gesetzlichen Vorgaben in deinem Land – Garantie und Versicherungsschutz können entfallen.</span>
-      <span class="lang lang-en">You use any tuning at your own risk. Check local laws – warranty and insurance coverage may be affected.</span>
-    </div>
   </section>
 
-  <!-- DOWNLOADS -->
-  <section class="section-gap fade-in visible" aria-labelledby="sec-dl" style="transition-delay: 60ms;">
-    <div class="section-label">
+  <!-- 01 – DOWNLOADS -->
+  <section class="section" id="downloads" aria-labelledby="h-downloads">
+    <div class="section-head">
       <span class="num">01</span>
-      <h2 id="sec-dl">
-        <span class="lang lang-de" hidden="">Downloads</span>
-        <span class="lang lang-en">Downloads</span>
-      </h2>
+      <h2 id="h-downloads">Downloads</h2>
     </div>
-    <div class="download-grid">
-      <!-- Primary -->
-      <div class="dl-card primary">
-        <div class="card-icon" aria-hidden="true">⚡</div>
-        <div>
-          <div class="dl-card-title">BWFlasher</div>
-          <div class="dl-card-desc">
-            <span class="lang lang-de" hidden="">Open-Source-Tool zum Flashen von Brightway-Controllern über UART.</span>
-            <span class="lang lang-en">Open-source tool for flashing Brightway controllers over UART.</span>
-          </div>
+
+    <p class="section-intro" data-i18n="dl.intro">Beide Programme werden auf dem Windows-PC benötigt. BWFlasher ist ein freies Open-Source-Programm, der FTDI-Treiber stammt vom Hersteller des Chips im Adapter.</p>
+
+    <div class="item-list">
+
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">BWFlasher</div>
+          <p class="item-desc" data-i18n="dl.flasher.desc">Programm zum Aufspielen der Firmware über den Adapter. Version 0.6.0 für Windows (64 Bit).</p>
         </div>
-        <button class="dl-btn prim" onclick="window.open('https://github.com/scooterteam/bw-flasher/releases/download/v0.6.0/bwflasher-v0.6.0-windows-x64.exe','_blank')" aria-label="BWFlasher herunterladen">
-          ⬇ BWFlasher v0.6.0 <span style="opacity:.6;font-size:11px">.exe</span>
-        </button>
+        <a class="btn btn-quiet"
+           href="https://github.com/scooterteam/bw-flasher/releases/download/v0.6.0/bwflasher-v0.6.0-windows-x64.exe"
+           target="_blank" rel="noopener"
+           aria-label="BWFlasher Version 0.6.0 herunterladen" data-i18n-aria-label="dl.flasher.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          BWFlasher 0.6.0 <span class="ext">.exe</span>
+        </a>
       </div>
-      <!-- Secondary -->
-      <div class="dl-card secondary">
-        <div class="card-icon" aria-hidden="true">🧩</div>
-        <div>
-          <div class="dl-card-title">FTDI USB-Treiber</div>
-          <div class="dl-card-desc">
-            <span class="lang lang-de" hidden="">Benötigt, damit dein FTDI-Adapter als COM-Port erkannt wird. Für Windows 10 &amp; 11.</span>
-            <span class="lang lang-en">Required for your FTDI adapter to be recognized as a COM port. For Windows 10 &amp; 11.</span>
-          </div>
+
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">FTDI USB-Treiber</div>
+          <p class="item-desc" data-i18n="dl.driver.desc">Damit Windows den Adapter als COM-Port erkennt. Für Windows 10 und 11.</p>
         </div>
-        <button class="dl-btn sec" onclick="window.open('https://ftdichip.com/wp-content/uploads/2025/03/CDM2123620_Setup.zip','_blank')" aria-label="FTDI Treiber herunterladen">
-          ⬇ CDM2123620_Setup <span style="opacity:.6;font-size:11px">.zip</span>
-        </button>
+        <a class="btn btn-quiet"
+           href="https://ftdichip.com/wp-content/uploads/2025/03/CDM2123620_Setup.zip"
+           target="_blank" rel="noopener"
+           aria-label="FTDI USB-Treiber herunterladen" data-i18n-aria-label="dl.driver.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          CDM2123620_Setup <span class="ext">.zip</span>
+        </a>
       </div>
+
     </div>
   </section>
 
-  <!-- FIRMWARE SELECTION -->
-  <section class="section-gap fade-in visible" aria-labelledby="sec-fw" style="transition-delay: 120ms;">
-    <div class="section-label">
+  <!-- 02 – FIRMWARE -->
+  <section class="section" id="firmware" aria-labelledby="h-firmware">
+    <div class="section-head">
       <span class="num">02</span>
-      <h2 id="sec-fw">
-        <span class="lang lang-de" hidden="">Firmware auswählen</span>
-        <span class="lang lang-en">Choose your firmware</span>
-      </h2>
+      <h2 id="h-firmware" data-i18n="sec.firmware">Firmware auswählen</h2>
     </div>
-    <div class="firmware-grid">
 
-      <div class="fw-card">
-        <div class="fw-card-info">
-          <div class="fw-card-name">Xiaomi 4 Pro 2nd</div>
-          <div class="fw-card-sub">Mi Scooter 4 Pro 2nd Gen</div>
+    <p class="section-intro" data-i18n="fw.intro">Lade ausschließlich die Datei für dein Modell herunter. Eine Firmware für ein anderes Modell kann den Scooter unbrauchbar machen.</p>
+
+    <div class="item-list">
+
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">Xiaomi 4 Pro 2nd</div>
+          <div class="item-sub">Mi Scooter 4 Pro 2nd Gen</div>
         </div>
-        <a class="fw-dl-btn" href="https://drive.google.com/file/d/1cXcERYIk_3RZgrzDqdbPtiiTFW8TCHFD/view?usp=drive_link" target="_blank" rel="noopener" aria-label="Xiaomi 4 Pro 2nd Firmware herunterladen">
-          ⬇ <span class="lang lang-de" hidden="">Firmware</span><span class="lang lang-en">Firmware</span>
+        <a class="btn btn-quiet"
+           href="https://drive.google.com/file/d/1cXcERYIk_3RZgrzDqdbPtiiTFW8TCHFD/view?usp=drive_link"
+           target="_blank" rel="noopener"
+           aria-label="Firmware für Xiaomi 4 Pro 2nd herunterladen" data-i18n-aria-label="fw.4pro2nd.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          Firmware
         </a>
       </div>
 
-      <div class="fw-card">
-        <div class="fw-card-info">
-          <div class="fw-card-name">Xiaomi 5</div>
-          <div class="fw-card-sub">Mi Scooter 5</div>
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">Xiaomi 5</div>
+          <div class="item-sub">Mi Scooter 5</div>
         </div>
-        <a class="fw-dl-btn" href="https://drive.google.com/file/d/1UgfIK0ndv4GoPXxU4kr4a2miVh7mh7or/view?usp=drive_link" target="_blank" rel="noopener" aria-label="Xiaomi 5 Firmware herunterladen">
-          ⬇ <span class="lang lang-de" hidden="">Firmware</span><span class="lang lang-en">Firmware</span>
+        <a class="btn btn-quiet"
+           href="https://drive.google.com/file/d/1UgfIK0ndv4GoPXxU4kr4a2miVh7mh7or/view?usp=drive_link"
+           target="_blank" rel="noopener"
+           aria-label="Firmware für Xiaomi 5 herunterladen" data-i18n-aria-label="fw.5.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          Firmware
         </a>
       </div>
 
-      <div class="fw-card">
-        <div class="fw-card-info">
-          <div class="fw-card-name">Xiaomi 5 Pro</div>
-          <div class="fw-card-sub">Mi Scooter 5 Pro</div>
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">Xiaomi 5 Pro</div>
+          <div class="item-sub">Mi Scooter 5 Pro</div>
         </div>
-        <a class="fw-dl-btn" href="https://drive.google.com/file/d/1-yK7X5Hzifv_BhWmn2svs27mrVb_5btl/view?usp=drive_link" target="_blank" rel="noopener" aria-label="Xiaomi 5 Pro Firmware herunterladen">
-          ⬇ <span class="lang lang-de" hidden="">Firmware</span><span class="lang lang-en">Firmware</span>
+        <a class="btn btn-quiet"
+           href="https://drive.google.com/file/d/1-yK7X5Hzifv_BhWmn2svs27mrVb_5btl/view?usp=drive_link"
+           target="_blank" rel="noopener"
+           aria-label="Firmware für Xiaomi 5 Pro herunterladen" data-i18n-aria-label="fw.5pro.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          Firmware
         </a>
       </div>
 
-      <div class="fw-card">
-        <div class="fw-card-info">
-          <div class="fw-card-name">Xiaomi 5 Max</div>
-          <div class="fw-card-sub">Mi Scooter 5 Max</div>
+      <div class="item">
+        <div class="item-text">
+          <div class="item-title">Xiaomi 5 Max</div>
+          <div class="item-sub">Mi Scooter 5 Max</div>
         </div>
-        <a class="fw-dl-btn" href="https://drive.google.com/file/d/1B_A8j-EfOqr08F6HRNw8s_yZGOCofx04/view?usp=drive_link" target="_blank" rel="noopener" aria-label="Xiaomi 5 Max Firmware herunterladen">
-          ⬇ <span class="lang lang-de" hidden="">Firmware</span><span class="lang lang-en">Firmware</span>
+        <a class="btn btn-quiet"
+           href="https://drive.google.com/file/d/1B_A8j-EfOqr08F6HRNw8s_yZGOCofx04/view?usp=drive_link"
+           target="_blank" rel="noopener"
+           aria-label="Firmware für Xiaomi 5 Max herunterladen" data-i18n-aria-label="fw.5max.aria">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>
+          Firmware
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- PREPARATION -->
-  <section class="section-gap fade-in" aria-labelledby="sec-prep" style="transition-delay: 180ms;">
-    <div class="section-label">
+  <!-- 03 – VORBEREITUNG -->
+  <section class="section" id="vorbereitung" aria-labelledby="h-prep">
+    <div class="section-head">
       <span class="num">03</span>
-      <h2 id="sec-prep">
-        <span class="lang lang-de" hidden="">Vorbereitung</span>
-        <span class="lang lang-en">Preparation</span>
-      </h2>
+      <h2 id="h-prep" data-i18n="sec.prep">Vorbereitung</h2>
     </div>
-    <div class="prep-grid">
-      <div class="prep-card">
-        <h3>
-          <span class="lang lang-de" hidden="">Was du brauchst</span>
-          <span class="lang lang-en">What you need</span>
-        </h3>
+
+    <div class="panel-grid">
+
+      <div class="panel">
+        <h3 data-i18n="prep.need.title">Was du brauchst</h3>
         <ul>
-          <li><span class="lang lang-de" hidden="">Windows-PC oder Laptop</span><span class="lang lang-en">Windows PC or laptop</span></li>
-          <li><span class="lang lang-de" hidden="">BWFlasher (oben herunterladen)</span><span class="lang lang-en">BWFlasher (download above)</span></li>
-          <li><span class="lang lang-de" hidden="">Firmware-Datei für dein Modell (oben herunterladen)</span><span class="lang lang-en">Firmware file for your model (download above)</span></li>
-          <li><span class="lang lang-de" hidden="">FTDI USB-Adapter + passendes Dashboard-Kabel</span><span class="lang lang-en">FTDI USB adapter + matching dashboard cable</span></li>
-          <li><span class="lang lang-de" hidden="">Scooter mit ausreichend Akkuladung</span><span class="lang lang-en">Scooter with enough battery charge</span></li>
+          <li data-i18n="prep.need.1">Windows-PC oder Laptop</li>
+          <li data-i18n="prep.need.2">Tuning-Adapter von Einfach Scooter mit passendem Dashboard-Kabel</li>
+          <li data-i18n="prep.need.3">BWFlasher und FTDI-Treiber (Abschnitt 01)</li>
+          <li data-i18n="prep.need.4">Firmware-Datei für dein Modell (Abschnitt 02)</li>
+          <li data-i18n="prep.need.5">Scooter mit ausreichend geladenem Akku</li>
         </ul>
       </div>
-      <div class="prep-card">
-        <h3>
-          <span class="lang lang-de" hidden="">Software einrichten</span>
-          <span class="lang lang-en">Software setup</span>
-        </h3>
+
+      <div class="panel">
+        <h3 data-i18n="prep.setup.title">Software einrichten</h3>
         <ol>
-          <li><span class="lang lang-de" hidden="">BWFlasher starten und Installation abschließen.</span><span class="lang lang-en">Run BWFlasher installer and finish setup.</span></li>
-          <li><span class="lang lang-de" hidden=""><code>CDM2123620_Setup</code> entpacken und Treiber-Setup ausführen.</span><span class="lang lang-en">Extract <code>CDM2123620_Setup</code> and run the driver setup.</span></li>
-          <li><span class="lang lang-de" hidden="">PC neu starten, damit der Adapter als COM-Port erkannt wird.</span><span class="lang lang-en">Restart the PC so the adapter is detected as a COM port.</span></li>
+          <li data-i18n="prep.setup.1">BWFlasher starten und die Installation abschließen.</li>
+          <li data-i18n="prep.setup.2"><code>CDM2123620_Setup</code> entpacken und das Treiber-Setup ausführen.</li>
+          <li data-i18n="prep.setup.3">PC neu starten, damit der Adapter als COM-Port erkannt wird.</li>
         </ol>
       </div>
+
     </div>
   </section>
 
-  <!-- STEP-BY-STEP -->
-  <section class="section-gap fade-in" aria-labelledby="sec-steps" style="transition-delay: 240ms;">
-    <div class="section-label">
+  <!-- 04 – ANLEITUNG -->
+  <section class="section" id="anleitung" aria-labelledby="h-steps">
+    <div class="section-head">
       <span class="num">04</span>
-      <h2 id="sec-steps">
-        <span class="lang lang-de" hidden="">Schritt-für-Schritt</span>
-        <span class="lang lang-en">Step-by-step guide</span>
-      </h2>
+      <h2 id="h-steps" data-i18n="sec.steps">Schritt für Schritt</h2>
     </div>
-    <ol class="steps-list" aria-label="Flash-Anleitung">
 
-      <li class="step-item">
+    <ol class="steps" aria-label="Anleitung zum Aufspielen der Firmware" data-i18n-aria-label="steps.list.aria">
+
+      <li class="step">
         <div class="step-num">01</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Scooter einschalten und <strong>Rücklicht aktivieren</strong> – so erkennst du, ob er anlässt.</span>
-          <span class="lang lang-en">Turn the scooter on and <strong>activate the rear light</strong> so you can see if it stays powered.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.1">Scooter einschalten und das <strong>Rücklicht aktivieren</strong>. Daran erkennst du während des gesamten Vorgangs, ob der Scooter mit Strom versorgt ist.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">02</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden=""><strong>Lenker abmontieren</strong> vom Scooter.</span>
-          <span class="lang lang-en"><strong>Remove the handlebar</strong> from the scooter.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.2">Den <strong>Lenker abmontieren</strong>.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">03</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden=""><strong>Dashboard-Kabel trennen</strong> und den Flash-Adapter einstecken.</span>
-          <span class="lang lang-en"><strong>Unplug the dashboard cable</strong> and insert the flashing adapter.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.3">Das <strong>Dashboard-Kabel trennen</strong> und den Tuning-Adapter einstecken.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">04</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Kontrollieren: <strong>Rücklicht muss noch leuchten.</strong> Der Scooter darf nicht ausgehen.</span>
-          <span class="lang lang-en">Verify: <strong>rear light must still be on.</strong> The scooter must stay powered.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.4">Kontrollieren: Das <strong>Rücklicht muss weiterhin leuchten.</strong> Der Scooter darf nicht ausgehen.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">05</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Adapter per USB mit dem PC verbinden. <strong>BWFlasher öffnen.</strong></span>
-          <span class="lang lang-en">Connect the adapter to your PC via USB. <strong>Open BWFlasher.</strong></span>
-        </div>
+        <div class="step-body" data-i18n="steps.5">Den Adapter per USB mit dem PC verbinden und <strong>BWFlasher öffnen</strong>.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">06</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Im Feld <code>Serial Port</code> den richtigen COM-Port wählen – <strong>meistens nicht</strong> <code>COM1</code>.</span>
-          <span class="lang lang-en">In <code>Serial Port</code> select the correct COM port – <strong>usually not</strong> <code>COM1</code>.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.6">Im Feld <code>Serial Port</code> den richtigen COM-Port wählen. Das ist <strong>in den meisten Fällen nicht</strong> <code>COM1</code>.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">07</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Auf den <code>Browse</code>-Button klicken und die <strong>Firmware-Datei auswählen</strong>, die du vorhin für deinen Scooter heruntergeladen hast.</span>
-          <span class="lang lang-en">Click the <code>Browse</code> button and <strong>select the firmware file</strong> you downloaded earlier for your scooter model.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.7">Über den Button <code>Browse</code> die <strong>Firmware-Datei auswählen</strong>, die du in Abschnitt 02 für dein Modell heruntergeladen hast.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">08</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden=""><code>Debug Mode</code> aktivieren – danach nochmals prüfen, ob das <strong>Rücklicht an ist.</strong></span>
-          <span class="lang lang-en">Enable <code>Debug Mode</code> – then verify once more that the <strong>rear light is still on.</strong></span>
-        </div>
+        <div class="step-body" data-i18n="steps.8"><code>Debug Mode</code> aktivieren und danach erneut prüfen, ob das <strong>Rücklicht leuchtet</strong>.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">09</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Auf <code>Start Update</code> klicken. Das Rücklicht <strong>sollte jetzt ausgehen</strong> – das ist normal.</span>
-          <span class="lang lang-en">Click <code>Start Update</code>. The rear light <strong>should now turn off</strong> – this is expected.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.9">Auf <code>Start Update</code> klicken. Dass das Rücklicht dabei <strong>ausgeht, ist normal</strong>.</div>
       </li>
 
-      <li class="step-item">
+      <li class="step">
         <div class="step-num">10</div>
-        <div class="step-body">
-          <span class="lang lang-de" hidden="">Warten, bis die Fortschrittsleiste <strong>100&nbsp;%</strong> erreicht und die Konsole ruhig ist. Adapter abziehen, Scooter wieder zusammenbauen.</span>
-          <span class="lang lang-en">Wait until the progress bar reaches <strong>100&nbsp;%</strong> and the console goes quiet. Disconnect the adapter and reassemble the scooter.</span>
-        </div>
+        <div class="step-body" data-i18n="steps.10">Warten, bis die Fortschrittsleiste <strong>100&nbsp;%</strong> erreicht hat und die Konsole keine Meldungen mehr ausgibt. Anschließend den Adapter abziehen und den Scooter wieder zusammenbauen.</div>
       </li>
 
     </ol>
   </section>
 
-  <!-- TROUBLESHOOTING -->
-  <section class="section-gap fade-in" aria-labelledby="sec-trouble" style="transition-delay: 300ms;">
-    <div class="section-label">
+  <!-- 05 – FEHLERBEHEBUNG -->
+  <section class="section" id="hilfe" aria-labelledby="h-trouble">
+    <div class="section-head">
       <span class="num">05</span>
-      <h2 id="sec-trouble">
-        <span class="lang lang-de" hidden="">Fehlerbehebung</span>
-        <span class="lang lang-en">Troubleshooting</span>
-      </h2>
+      <h2 id="h-trouble" data-i18n="sec.trouble">Fehlerbehebung</h2>
     </div>
-    <div class="accordion">
 
-      <div class="acc-item">
-        <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
-          <span>
-            <span class="lang lang-de" hidden="">Update bleibt bei 0&nbsp;% stehen</span>
-            <span class="lang lang-en">Update stuck at 0&nbsp;%</span>
-          </span>
-          <span class="chevron" aria-hidden="true">⌄</span>
+    <div class="faq">
+
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="trouble.stuck.title">Die Übertragung bleibt bei 0&nbsp;% stehen</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
         </button>
-        <div class="acc-body" hidden="">
+        <div class="faq-body" hidden="">
           <ul>
-            <li><span class="lang lang-de" hidden="">Ist der Scooter eingeschaltet? (Rücklicht sollte leuchten)</span><span class="lang lang-en">Is the scooter powered on? (rear light should be on)</span></li>
-            <li><span class="lang lang-de" hidden="">Sind alle Verbindungen korrekt? (Kabel, Adapter, USB)</span><span class="lang lang-en">Are all connections correct? (cable, adapter, USB)</span></li>
-            <li><span class="lang lang-de" hidden="">Programm schließen, Scooter aus- und wieder einschalten, erneut versuchen.</span><span class="lang lang-en">Close the program, power cycle the scooter, try again.</span></li>
+            <li data-i18n="trouble.stuck.1">Ist der Scooter eingeschaltet? Das Rücklicht sollte leuchten.</li>
+            <li data-i18n="trouble.stuck.2">Sitzen alle Verbindungen fest – Kabel, Adapter und USB?</li>
+            <li data-i18n="trouble.stuck.3">Programm schließen, Scooter aus- und wieder einschalten, erneut versuchen.</li>
           </ul>
         </div>
       </div>
 
-      <div class="acc-item">
-        <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
-          <span>
-            <span class="lang lang-de" hidden="">Programm stürzt ab oder hängt</span>
-            <span class="lang lang-en">Program crashes or freezes</span>
-          </span>
-          <span class="chevron" aria-hidden="true">⌄</span>
+      <div class="faq-item">
+        <button type="button" class="faq-trigger" aria-expanded="false">
+          <span data-i18n="trouble.crash.title">Das Programm stürzt ab oder reagiert nicht mehr</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6.5 4 4 4-4"/></svg>
         </button>
-        <div class="acc-body" hidden="">
+        <div class="faq-body" hidden="">
           <ul>
-            <li><span class="lang lang-de" hidden="">Scooter ausschalten, kurz warten, wieder einschalten.</span><span class="lang lang-en">Turn the scooter off, wait a few seconds, turn it back on.</span></li>
-            <li><span class="lang lang-de" hidden="">BWFlasher neu starten und den Vorgang von vorne beginnen.</span><span class="lang lang-en">Restart BWFlasher and repeat the whole process from the start.</span></li>
+            <li data-i18n="trouble.crash.1">Scooter ausschalten, kurz warten und wieder einschalten.</li>
+            <li data-i18n="trouble.crash.2">BWFlasher neu starten und den Vorgang von vorne beginnen.</li>
           </ul>
-          <div class="ok-note">
-            <span class="lang lang-de" hidden="">💬 Wenn gar nichts hilft, kannst du den Verkäufer/Ersteller dieses Guides z.&nbsp;B. über Ebay oder Email kontaktieren.</span>
-            <span class="lang lang-en">💬 If nothing helps, contact the seller/creator of this guide, for example via Ebay or Email.</span>
-          </div>
+          <p class="notice notice-ok">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.5 3.5L13 5"/></svg>
+            <span data-i18n="trouble.crash.note">Wenn nichts davon hilft, melde dich bei uns – per E-Mail oder direkt über den eBay-Shop. Wir helfen dir weiter.</span>
+          </p>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 06 – ÜBER & KONTAKT -->
+  <section class="section" id="kontakt" aria-labelledby="h-about">
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2 id="h-about" data-i18n="sec.about">Über Einfach Scooter</h2>
+    </div>
+
+    <div class="panel-grid">
+
+      <div class="panel">
+        <h3 data-i18n="about.title">Wer wir sind</h3>
+        <p data-i18n="about.p1">Einfach Scooter verkauft Tuning-Adapter für elektrische Scooter von Xiaomi und Brightway. Der Adapter wird zwischen Scooter und Windows-PC gesteckt und stellt die Verbindung zur Steuerung her, über die sich die Firmware aufspielen lässt.</p>
+        <p data-i18n="about.p2">Diese Seite gehört zum Adapter: Sie enthält die passende Firmware, die benötigten Programme und die vollständige Anleitung. Alle Adapter versenden wir über unseren eBay-Shop.</p>
+      </div>
+
+      <div class="panel">
+        <h3 data-i18n="contact.title">Kontakt &amp; Support</h3>
+        <p data-i18n="contact.p1">Fragen zum Adapter oder zur Anleitung beantworten wir gerne. Schreib uns am besten mit Angabe deines Scooter-Modells.</p>
+
+        <p class="contact-line">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1"/><path d="m2.5 4.5 5.5 4 5.5-4"/></svg>
+          <a href="mailto:support@einfach-scooter.de">support@einfach-scooter.de</a>
+        </p>
+
+        <p class="contact-line">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>
+          <a href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener">
+            <span data-i18n="contact.shop">eBay-Shop von Einfach Scooter</span>
+          </a>
+        </p>
       </div>
 
     </div>
@@ -1094,76 +432,20 @@
 </main>
 
 <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">BWFlasher Guide</div>
+      <div class="footer-brand">Einfach Scooter</div>
       <div class="footer-links">
-        <a href="https://github.com/scooterteam/bw-flasher" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.ebay.de/usr/einfach_scooter" target="_blank" rel="noopener" data-i18n="nav.shop">eBay-Shop</a>
+        <a href="mailto:support@einfach-scooter.de" data-i18n="footer.contact">Kontakt</a>
+        <a href="https://github.com/scooterteam/bw-flasher" target="_blank" rel="noopener">BWFlasher</a>
         <a href="https://ftdichip.com" target="_blank" rel="noopener">FTDI</a>
       </div>
     </div>
-    <p class="footer-legal lang lang-de" hidden="">Diese Seite steht in keinem Zusammenhang mit Xiaomi oder Brightway. Jede Nutzung von Firmware-Modifikationen geschieht auf eigene Gefahr. Prüfe die gesetzlichen Bestimmungen in deinem Land.</p>
-    <p class="footer-legal lang lang-en">This site is not affiliated with Xiaomi or Brightway. You use any firmware modifications entirely at your own risk. Check the applicable laws in your country.</p>
+    <p class="footer-legal" data-i18n="footer.legal">Einfach Scooter steht in keinem Zusammenhang mit Xiaomi oder Brightway. Firmware-Änderungen erfolgen auf eigene Verantwortung; Betriebserlaubnis, Garantie und Versicherungsschutz können dadurch entfallen. Bitte beachte die gesetzlichen Bestimmungen in deinem Land.</p>
   </div>
 </footer>
 
-<script>
-  /* ─── LANGUAGE SWITCHER ─────────────────────────────────────────── */
-  function setLang(lang) {
-    const deEls = document.querySelectorAll('.lang-de');
-    const enEls = document.querySelectorAll('.lang-en');
-    const btnDe = document.getElementById('btn-de');
-    const btnEn = document.getElementById('btn-en');
-
-    if (lang === 'de') {
-      deEls.forEach(el => { el.hidden = false; });
-      enEls.forEach(el => { el.hidden = true; });
-      btnDe.classList.add('active'); btnDe.setAttribute('aria-pressed', 'true');
-      btnEn.classList.remove('active'); btnEn.setAttribute('aria-pressed', 'false');
-      document.documentElement.lang = 'de';
-    } else {
-      enEls.forEach(el => { el.hidden = false; });
-      deEls.forEach(el => { el.hidden = true; });
-      btnEn.classList.add('active'); btnEn.setAttribute('aria-pressed', 'true');
-      btnDe.classList.remove('active'); btnDe.setAttribute('aria-pressed', 'false');
-      document.documentElement.lang = 'en';
-    }
-  }
-
-  /* ─── ACCORDION ──────────────────────────────────────────────────── */
-  function toggleAcc(btn) {
-    const item = btn.closest('.acc-item');
-    const body = item.querySelector('.acc-body');
-    const isOpen = item.classList.contains('open');
-    item.classList.toggle('open', !isOpen);
-    body.hidden = isOpen;
-    btn.setAttribute('aria-expanded', !isOpen);
-  }
-
-  /* ─── SCROLL PROGRESS ────────────────────────────────────────────── */
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const doc = document.documentElement;
-    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
-    bar.style.width = pct + '%';
-  }, { passive: true });
-
-  /* ─── FADE-IN ON SCROLL ──────────────────────────────────────────── */
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  fadeEls.forEach((el, i) => {
-    el.style.transitionDelay = (i * 60) + 'ms';
-    observer.observe(el);
-  });
-</script>
-
-</body></html>
+</body>
+</html>
