@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Einfach Scooter">
+  <title>Einfach Scooter</title>
+  <defs>
+    <linearGradient id="es-grad" x1="0" y1="0" x2="1" y2="0.7">
+      <stop offset="0" stop-color="#8ab4dc"/>
+      <stop offset="1" stop-color="#5b86b4"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-width="14" stroke-linecap="round">
+    <path d="M 33 40 H 79 a 24 24 0 0 1 0 48 H 51" stroke="url(#es-grad)"/>
+    <path d="M 25 64 H 61" stroke="#8ab4dc"/>
+  </g>
+</svg>

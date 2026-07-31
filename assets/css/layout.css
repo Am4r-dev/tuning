@@ -32,18 +32,13 @@
 }
 
 .brand-mark {
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--c-border-hi);
-  border-radius: var(--r-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--c-accent);
-  letter-spacing: .02em;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  fill: none;
+  stroke: var(--c-accent-hi);
+  stroke-width: 14;
+  stroke-linecap: round;
 }
 
 .brand-name {
@@ -124,22 +119,51 @@ main {
 
 .footer-top {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
 }
 
+/* Footer-Titel über den Links: Bildmarke als SVG, Schrift als echter
+   HTML-Text. Text im SVG würde bei dieser Größe auf ~5px skalieren
+   und dadurch matschig rendern. */
 .footer-brand {
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.footer-mark {
+  display: block;
+  flex: none;
+  width: 44px;
+  height: 44px;
+}
+
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 19px;
   font-weight: 600;
-  color: var(--c-text);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--c-heading);
+}
+
+.footer-brand-text span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--c-accent);
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  justify-content: center;
+  gap: 12px 20px;
 }
 
 .footer-links a {
