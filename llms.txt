@@ -1,0 +1,21 @@
+# Einfach Scooter
+
+Einfach Scooter bietet einen Tuning-Chip mit Dashboard-Kabel für kompatible Xiaomi E-Scooter. Diese Website enthält die zugehörige Anleitung zum Flashen der Firmware, Downloads, Hinweise zur Vorbereitung und Support.
+
+## Wichtige Seiten
+
+- [Startseite und Anleitung](https://einfach-scooter.de/): Anleitung zum Flashen eines kompatiblen Xiaomi E-Scooters mit dem Tuning-Chip.
+- [Downloads](https://einfach-scooter.de/#downloads): BWFlasher, Firmware-Tool und benötigte Treiber.
+- [Firmware](https://einfach-scooter.de/#firmware): Firmware für unterstützte Xiaomi-Modelle.
+- [Schritt-für-Schritt-Anleitung](https://einfach-scooter.de/#anleitung): Vorbereitung und Flash-Vorgang.
+- [Häufige Fragen](https://einfach-scooter.de/#faq): Hilfe bei COM-Port, Verbindung und Flash-Vorgang.
+- [Tuning-Chip im eBay-Shop](https://www.ebay.de/usr/einfach_scooter): Bestellung des passenden Tuning-Chips.
+
+## Kontakt
+
+- [Support per E-Mail](mailto:support@einfach-scooter.de)
+- [Einfach Scooter bei eBay](https://www.ebay.de/usr/einfach_scooter)
+
+## Rechtlicher Hinweis
+
+Änderungen an Geschwindigkeit oder Motorsteuerung können im öffentlichen Straßenverkehr unzulässig sein. Nutzende sind selbst dafür verantwortlich, die geltenden Vorschriften einzuhalten.
